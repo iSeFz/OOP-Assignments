@@ -1,13 +1,10 @@
 #include "BDI_Header.hpp"
 
-using namespace std;
-
 // Main class that contain all program features
 class BigDecimalInt{
     // Private data hiding
     private:
         string decStr;
-        int decInt;
         void setDecStr(string diffStr){
             decStr = diffStr;
         }
@@ -25,6 +22,7 @@ class BigDecimalInt{
             }
             decStr = decString;
         }
+
         BigDecimalInt(int decInt){
             // Check for the max value for the "int" data type
             if (decInt > 32767 || decInt < -32767){
@@ -34,25 +32,28 @@ class BigDecimalInt{
                 decStr = to_string(decInt);
             }
         }
+
         // Returns the size of BigDecimalInt
         int size(){
-            if(decStr.substr(0, 1) == "+" || decStr.substr(0, 1) == "-"){
+            if(decStr[0] == '+' || decStr[0] == '-'){
                 return (int)decStr.length() - 1;
             }
             return (int)decStr.length();
         }
+
         // Returns the sign of BigDecimalInt
         int sign(){
-            if(decStr.substr(0, 1) == "+"){
+            if(decStr[0] == '+'){
                 return 0;
             }
-            else if(decStr.substr(0, 1) == "-"){
+            else if(decStr[0] == '-'){
                 return 1;
             }
             return 0;
         }
+
         // Overloading the plus operator to work with BigDecimalInt objects
-        BigDecimalInt operator+ (BigDecimalInt & anotherDec){
+        BigDecimalInt operator + (BigDecimalInt & anotherDec){
             string finalAns, temp;
             int carry = 0;
             int sizeDifference = decStr.size() - anotherDec.size();
@@ -136,6 +137,59 @@ class BigDecimalInt{
                     return true;
                 }
                 else if(firstStr[i] < secondStr[i]){
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        // Overloading the less than "<" operator to work with BigDecimalInt objects
+        bool operator < (BigDecimalInt & anotherDec){
+
+            string firstStr = anotherDec.getDecStr();
+            int firstIsNeg = anotherDec.sign();
+            string secondStr = decStr;
+            int secondIsNeg = 0;
+
+            if(secondStr[0] == '-'){
+                secondIsNeg = 1;
+            }
+            // Checks if first is positive and second is negative (1st > 2nd)
+            if(!firstIsNeg && secondIsNeg){
+                return true;
+            }
+                // Checks if first is negative and second is positive (1st < 2nd)
+            else if(firstIsNeg && !secondIsNeg){
+                return false;
+            }
+                // If both numbers are positive remove the sign
+            else if(!firstIsNeg){
+                // Check whether there is a "+" sign or not and if so, remove it.
+                if(secondStr[0] == '+'){
+                    secondStr.erase(0, 1);
+                }
+                if(firstStr[0] == '+'){
+                    firstStr.erase(0, 1);
+                }
+            }
+                // If both numbers are negative swap the values
+            else{
+                string temp = firstStr;
+                firstStr = secondStr;
+                secondStr = temp;
+            }
+            // Check for size firstly then check for each digit in the number
+            if(secondStr.size() < firstStr.size()){
+                return true;
+            }
+            else if(secondStr.size() > firstStr.size()){
+                return false;
+            }
+            for(int i = 0; i < secondStr.size(); ++i){
+                if(secondStr[i] < firstStr[i]){
+                    return true;
+                }
+                else if(secondStr[i] > firstStr[i]){
                     return false;
                 }
             }

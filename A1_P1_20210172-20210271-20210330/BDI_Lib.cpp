@@ -51,4 +51,43 @@ class BigDecimalInt{
             }
             return 0;
         }
+        // Overloading the plus operator to work with BigDecimalInt objects
+        BigDecimalInt operator+ (BigDecimalInt & anotherDec){
+            string finalAns, temp;
+            int carry = 0;
+            int sizeDifference = decStr.size() - anotherDec.size();
+            // Add zeros in the beginning of the smaller sized number
+            if(sizeDifference < 0){
+                for(int i = sizeDifference; i < 0; i++){
+                    decStr = "0" + decStr;
+                }
+            }
+            else if(sizeDifference > 0){
+                for(int i = sizeDifference; i > 0; i--){
+                    anotherDec.setDecStr("0" + anotherDec.getDecStr());
+                }
+            }
+            // Begin the addition process only if the two numbers are the same size
+            for(int i = (int)decStr.length() - 1; i >= 0; i--){
+                int sum = ((decStr[i] - '0') + (anotherDec.getDecStr()[i] - '0'));
+                if((sum += carry) > 9){
+                    sum -= 10;
+                    temp = "";
+                    temp.push_back(char(sum) + '0');
+                    finalAns = temp + finalAns;
+                    carry = 1;
+                }
+                else{
+                    temp = "";
+                    temp.push_back(char(sum) + '0');
+                    finalAns = temp + finalAns;
+                    carry = 0;
+                }
+            }
+            if(carry){
+                finalAns = "1" + finalAns;
+            }
+            BigDecimalInt result(finalAns);
+            return result;
+        }
 };

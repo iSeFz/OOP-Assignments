@@ -5,8 +5,8 @@ Team Members:
     Omar Elgammal - 20210271
     Mohamed Amgad - 20210330
 Program Name: Big Decimal Integer Program
-Last Modification Date: 9 October 2022
-Version: 1.2
+Last Modification Date: 13 October 2022
+Version: 1.5
 */
 
 #include "BDI_Lib.cpp"

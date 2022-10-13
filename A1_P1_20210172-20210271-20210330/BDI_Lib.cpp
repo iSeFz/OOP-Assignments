@@ -90,4 +90,55 @@ class BigDecimalInt{
             BigDecimalInt result(finalAns);
             return result;
         }
+
+        // Overloading the greater than ">" operator to work with BigDecimalInt objects
+        bool operator > (BigDecimalInt & anotherDec){
+            string firstStr = decStr;
+            int firstIsNeg = 0;
+            string secondStr = anotherDec.getDecStr();
+            int secondIsNeg = anotherDec.sign();
+            if(firstStr[0] == '-'){
+                firstIsNeg = 1;
+            }
+            // Checks if first is positive and second is negative (1st > 2nd)
+            if(!firstIsNeg && secondIsNeg){
+                return true;
+            }
+            // Checks if first is negative and second is positive (1st < 2nd)
+            else if(firstIsNeg && !secondIsNeg){
+                return false;
+            }
+            // If both numbers are positive remove the sign
+            else if(!firstIsNeg){
+                // Check whether there is a "+" sign or not and if so, remove it.
+                if(firstStr[0] == '+'){
+                    firstStr.erase(0, 1);
+                }
+                if(secondStr[0] == '+'){
+                    secondStr.erase(0, 1);
+                }
+            }
+            // If both numbers are negative swap the values
+            else{
+                string temp = firstStr;
+                firstStr = secondStr;
+                secondStr = temp;
+            }
+            // Check for size firstly then check for each digit in the number
+            if(firstStr.size() > secondStr.size()){
+                return true;
+            }
+            else if(firstStr.size() < secondStr.size()){
+                return false;
+            }
+            for(int i = 0; i < firstStr.size(); ++i){
+                if(firstStr[i] > secondStr[i]){
+                    return true;
+                }
+                else if(firstStr[i] < secondStr[i]){
+                    return false;
+                }
+            }
+            return false;
+        }
 };

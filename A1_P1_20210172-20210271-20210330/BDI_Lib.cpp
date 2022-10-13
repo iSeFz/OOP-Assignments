@@ -22,7 +22,7 @@ class BigDecimalInt{
             }
             decStr = decString;
         }
-
+        
         BigDecimalInt(int decInt){
             // Check for the max value for the "int" data type
             if (decInt > 32767 || decInt < -32767){
@@ -53,7 +53,7 @@ class BigDecimalInt{
         }
 
         // Overloading the plus operator to work with BigDecimalInt objects
-        BigDecimalInt operator + (BigDecimalInt & anotherDec){
+        BigDecimalInt operator+ (BigDecimalInt & anotherDec){
             string finalAns, temp;
             int carry = 0;
             int sizeDifference = decStr.size() - anotherDec.size();
@@ -195,4 +195,28 @@ class BigDecimalInt{
             }
             return false;
         }
+
+        // Overload the equality "==" operator to check if the two numbers are equal
+        bool operator == (BigDecimalInt anotherDec){
+            string leftStr = anotherDec.getDecStr();
+            string rightStr = decStr;
+            if(leftStr[0] == '+'){
+                leftStr.erase(0, 1);
+            }
+            if(rightStr[0] == '+'){
+                rightStr.erase(0, 1);
+            }
+            if(leftStr == rightStr){
+                return true;
+            }
+            return false;
+        }
+
+        // Overload the equal "=" operator to deal with objects
+        BigDecimalInt operator = (BigDecimalInt anotherDec){
+            decStr = anotherDec.getDecStr();
+            // Return the left value assuming num1 = num2, it returns "num1"
+            return *this;
+        }
+
 };

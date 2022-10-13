@@ -218,5 +218,10 @@ class BigDecimalInt{
             // Return the left value assuming num1 = num2, it returns "num1"
             return *this;
         }
-
+        
+        // Overload the exertion operator "<<" to print objects
+        friend ostream & operator << (ostream & out, BigDecimalInt b){
+            out << b.decStr;
+            return out;
+        }
 };

@@ -5,6 +5,8 @@
 #include <string>
 #include <regex>
 
+using namespace std;
+
 class BigDecimalInt;
 
 #endif

@@ -8,8 +8,8 @@ class BigDecimalInt{
     private:
         string decStr;
         int decInt;
-        void setDecStr(string decStr_){
-            decStr = decStr_;
+        void setDecStr(string diffStr){
+            decStr = diffStr;
         }
         string getDecStr(){
             return decStr;
@@ -25,13 +25,30 @@ class BigDecimalInt{
             }
             decStr = decString;
         }
-        BigDecimalInt(int decInt) {
+        BigDecimalInt(int decInt){
             // Check for the max value for the "int" data type
-            if (decInt > 32767 || decInt < -32767) {
+            if (decInt > 32767 || decInt < -32767){
                 cerr << "INVALID INTEGER!!\n";
             }
-            else {
+            else{
                 decStr = to_string(decInt);
             }
+        }
+        // Returns the size of BigDecimalInt
+        int size(){
+            if(decStr.substr(0, 1) == "+" || decStr.substr(0, 1) == "-"){
+                return (int)decStr.length() - 1;
+            }
+            return (int)decStr.length();
+        }
+        // Returns the sign of BigDecimalInt
+        int sign(){
+            if(decStr.substr(0, 1) == "+"){
+                return 0;
+            }
+            else if(decStr.substr(0, 1) == "-"){
+                return 1;
+            }
+            return 0;
         }
 };

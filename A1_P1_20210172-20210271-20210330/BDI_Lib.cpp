@@ -52,6 +52,19 @@ class BigDecimalInt{
             return 0;
         }
 
+        BigDecimalInt inv(BigDecimalInt x){
+        if(decStr[0] = '-'){
+            decStr.erase(0, 1);
+        }
+        else if(decStr[0] = '+'){
+            decStr[0] = '-';
+        }
+        else{
+            decStr = "-" + decStr;
+        }
+        return BigDecimalInt(decStr);
+        }
+
         // Overloading the plus operator to work with BigDecimalInt objects
         BigDecimalInt operator + (BigDecimalInt & anotherDec){
             string finalAns, temp;

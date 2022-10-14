@@ -53,24 +53,36 @@ class BigDecimalInt{
         }
 
         // Overloading the plus operator to work with BigDecimalInt objects
-        BigDecimalInt operator+ (BigDecimalInt & anotherDec){
+        BigDecimalInt operator + (BigDecimalInt & anotherDec){
             string finalAns, temp;
+            string firstStr = decStr;
+            string secondStr = anotherDec.getDecStr();
             int carry = 0;
-            int sizeDifference = decStr.size() - anotherDec.size();
+            // Check for the sign of the number before beginning the addition process
+            if(firstStr[0] == '+'){
+                firstStr.erase(0, 1);
+            }
+            if(secondStr[0] == '+'){
+                secondStr.erase(0, 1);
+            }
+
+            // Check for the minus sign is still uncovered !!
+
+            int sizeDifference = firstStr.size() - secondStr.size();
             // Add zeros in the beginning of the smaller sized number
             if(sizeDifference < 0){
                 for(int i = sizeDifference; i < 0; i++){
-                    decStr = "0" + decStr;
+                    firstStr = "0" + firstStr;
                 }
             }
             else if(sizeDifference > 0){
                 for(int i = sizeDifference; i > 0; i--){
-                    anotherDec.setDecStr("0" + anotherDec.getDecStr());
+                    secondStr = "0" + secondStr;
                 }
             }
             // Begin the addition process only if the two numbers are the same size
-            for(int i = (int)decStr.length() - 1; i >= 0; i--){
-                int sum = ((decStr[i] - '0') + (anotherDec.getDecStr()[i] - '0'));
+            for(int i = (int)firstStr.length() - 1; i >= 0; i--){
+                int sum = ((firstStr[i] - '0') + (secondStr[i] - '0'));
                 if((sum += carry) > 9){
                     sum -= 10;
                     temp = "";
@@ -221,6 +233,10 @@ class BigDecimalInt{
         
         // Overload the exertion operator "<<" to print objects
         friend ostream & operator << (ostream & out, BigDecimalInt b){
+            // Check if the first character is a "+" sign & if so, erase it
+            if(b.getDecStr()[0] == '+'){
+                b.decStr.erase(0, 1);
+            }
             out << b.decStr;
             return out;
         }

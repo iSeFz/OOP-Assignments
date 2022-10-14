@@ -117,6 +117,98 @@ class BigDecimalInt{
             return result;
         }
 
+        BigDecimalInt operator- (BigDecimalInt & anotherDec){
+            int inverse = 0;
+            string result, temp;
+            int sum = 0;
+            int isCarry = 0;
+            // if 1st negative:
+            // 1 + 2 then negative
+            // if 2nd negative:
+            // 1 + 2
+            // if both positive:
+            // if 1 > 2  = 1 - 2
+            // if 1 < 2 = -(2 - 1)
+            // if both negative (2 - 1):
+            // if 2 > 1  = 2 - 1
+            // if 2 < 1 = -(1 - 2)
+            string firstStr = decStr;
+            int firstIsNeg = 0;
+            string secondStr = anotherDec.getDecStr();
+            int secondIsNeg = anotherDec.sign();
+            if(firstStr[0] == '-'){
+                firstIsNeg = 1;
+            }
+            if(firstStr[0] == '-' || firstStr[0] == '+'){
+                firstStr.erase(0, 1);
+            }
+            if(secondStr[0] == '-' || secondStr[0] == '+'){
+                secondStr.erase(0, 1);
+            }
+            if (firstIsNeg && !secondIsNeg){
+                return (inv(BigDecimalInt(firstStr) + anotherDec));
+            }
+            else if(!firstIsNeg && secondIsNeg){
+                //TODO: needs fixing ->   + operator is trolling
+                anotherDec.setDecStr(secondStr);
+                return (BigDecimalInt(firstStr) + anotherDec);
+            }
+            else if(!firstIsNeg && !secondIsNeg){
+                if(BigDecimalInt(firstStr) < anotherDec) {
+                    string temp = secondStr;
+                    secondStr = firstStr;
+                    firstStr = temp;
+                    inverse = 1;
+                }
+            }
+            else{
+                if(BigDecimalInt(firstStr) < anotherDec){
+                    string temp = secondStr;
+                    secondStr = firstStr;
+                    firstStr = temp;
+                }
+                else {
+                    inverse = 1;
+                }
+            }
+
+            int sizeDifference = firstStr.size() - secondStr.size();
+            // Add zeros in the beginning of the smaller sized number
+            if(sizeDifference < 0){
+                for(int i = sizeDifference; i < 0; i++){
+                    firstStr = "0" + firstStr;
+                }
+            }
+            else if(sizeDifference > 0){
+                for(int i = sizeDifference; i > 0; i--){
+                    secondStr = "0" + secondStr;
+                }
+            }
+            for(int i = firstStr.size() - 1; i >= 0; i--){
+                if(isCarry){
+                    firstStr[i] = ((firstStr[i] - '0') - 1) + '0';
+                    isCarry = 0;
+                }
+                if(firstStr[i] < secondStr[i]){
+                    sum = (firstStr[i] - '0') - (secondStr[i] - '0') + 10;
+                    isCarry = 1;
+                }
+                else{
+                    sum = (firstStr[i] - '0') - (secondStr[i] - '0');
+                }
+                temp = "";
+                temp.push_back(char(sum) + '0');
+                result = temp + result;
+            }
+            while(result[0] == '0'){
+                result.erase(0, 1);
+            }
+            if(inverse){
+                return inv(BigDecimalInt(result));
+            }
+            return BigDecimalInt(result);
+        }
+
         // Overloading the greater than ">" operator to work with BigDecimalInt objects
         bool operator > (BigDecimalInt & anotherDec){
             string firstStr = decStr;

@@ -1,89 +1,95 @@
 #include<iostream>
 #include <fstream>
 #include<sstream>
+#include <vector>
 using namespace std;
-
-string fileToString(fstream &file)
+// Function to fill vector with lines of files
+vector<string> fileToVector(fstream &file)
 {
-    string fTos;
-    char ch;
-    ch = file.get();
-    while(!file.eof()){
-        fTos += ch;
-        ch = file.get();
+    string line;
+    vector<string>vec;
+    while (getline(file,line))
+    {
+        vec.push_back(line);
     }
-    return fTos;
+    return vec;
 }
-void compByChar(fstream &file1, fstream &file2)
+
+// Function to compare two files char by char
+void compByChar(fstream &firstFile, fstream &secondFile)
 {
-    string str1,str2;
-    str1 = fileToString(file1);
-    str2 = fileToString(file2);
-    int count = 0;
-    int smallest = (int)min(str1.size(),str2.size());
-    int longest = (int)max(str1.size(),str2.size());
-    if(str1 != str2)
-    {
-        cout << "First File:\n";
-        for(int i = 0;i<smallest;i++)
-        {
-            if(str1[i] != str2[i])
-            {
-                cout << "\'" << str1[i] << "\'";
-                count++;
-            }
-            else
-            {
-                cout << str1[i];
-            }
-        }
-        if(str1.size() > str2.size())
-        {
-            for (int i = smallest; i < longest; ++i)
-            {
-                cout << "\'" << str1[i];
-                count++;
-            }
-        }
-        cout << "\nThe number of differences = "<< count;
+    // load firstFile to v1 line by line
+    vector<string>v1(fileToVector(firstFile));
+    // load secondFile to v2 line by line
+    vector<string>v2(fileToVector(secondFile));
+    bool swp = false;
+    // make two vectors equal in length
+    while (v1.size() > v2.size())
+        v2.emplace_back("*");
 
-    }
-    else
+    while (v1.size() < v2.size())
     {
-        cout << "The files are identical\n";
+        v1.emplace_back("*");
+        swp = true;
     }
+    //get the greatest vector
+    if (swp)
+        v1.swap(v2);
 
+    for (int i = 0; i< (int)v1.size(); ++i)
+    {
+        // compare each line char by char
+        if(v1[i] != v2[i])
+        {
+            cout << "Line number " << i + 1 << " is different and it is:\n";
+            cout << v1[i];
+            return;
+        }
+    }
+    cout << "Two files are identical\n";
 }
-void compByWord(fstream &file1, fstream &file2)
+
+// Function to compare file word by word
+void compByWord(fstream &firstFile, fstream &secondFile)
 {
-    string word1,word2;
-    stringstream ss1(fileToString(file1));
-    stringstream ss2(fileToString(file2));
-    while (ss1 >> word1 and ss2 >> word2)
+    // load firstFile to v1 line by line
+    vector<string>v1(fileToVector(firstFile));
+    // load secondFile to v2 line by line
+    vector<string>v2(fileToVector(secondFile));
+    string wordOfF1,wordOfF2;
+    bool swp = false;
+    // make two vectors equal in length
+    while (v1.size() > v2.size())
+        v2.emplace_back("*");
+
+    while (v1.size() < v2.size())
     {
-        if(word1 != word2)
+        v1.emplace_back("*");
+        swp = true;
+    }
+    //get the greatest vector
+    if (swp)
+        v1.swap(v2);
+
+    for (int i = 0; i < (int) v1.size(); ++i)
+    {
+        // load string-streams with lines of the both files
+        stringstream ss1(v1[i]) , ss2(v2[i]);
+        // take each word in string-stream and load it in variable
+        while (ss1 >> wordOfF1)
         {
-            if(ss1.peek() == ' ')
+            ss2 >> wordOfF2;
+
+            if (wordOfF1 != wordOfF2)
             {
-                cout << "\'" << word1 << "\' ";
-                continue;
+                cout <<"word "<< wordOfF1 << " is different and exist in that line:\n";
+                cout << v1[i];
+                return;
             }
-            if(ss1.peek() == '\n')
-            {
-                cout << "\'" << word1 << "\'\n";
-                continue;
-            }
-            cout << "\'" << word1 << "\'";
-        }
-        else
-        {
-            if (ss1.peek() == '\n')
-                cout << word1 << "\n";
-            else
-                cout << word1 << " ";
         }
     }
-
+    // print when two files identical
+    cout << "Two files are identical\n";
 }
 
 void Menu()
@@ -92,11 +98,13 @@ void Menu()
     cout << "Enter name of first file (without .txt): ";
     cin >> file1;
     fstream fl1(file1+".txt", ios::in);
+    // check if file opened or not
     if(fl1.fail())
     {
         cout << "can't open file1";
         return;
     }
+
     cout << "Enter name of second file (without .txt): ";
     cin >> file2;
     fstream fl2(file2+".txt", ios::in);
@@ -105,8 +113,9 @@ void Menu()
         cout << "can't open file2";
         return;
     }
+
     string choice;
-    cout << "Menu:\n\t1) Compare by char\n\t2) Compare by word\n";
+    cout << "Menu:\n\t1) Compare by char\n\t2) Compare by word\n\t0) exit";
     cout << "Enter number from [1-2]: ";
     cin >> choice;
     while (choice != "1" and choice != "2")
@@ -117,9 +126,10 @@ void Menu()
         cin.clear();
         cin >> choice;
     }
+    // take choice
     if(choice == "1")
         compByChar(fl1, fl2);
-    else if(choice == "2")
+    else
         compByWord(fl1,fl2);
 }
 

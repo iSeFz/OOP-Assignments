@@ -6,10 +6,10 @@ Team Members:
     Mohamed Amgad - 20210330
 Program Name: Big Decimal Integer Program
 Last Modification Date: 14 October 2022
-Version: 2.0
+Version: 3.0
 */
 
-#include "BDI_Lib.cpp"
+#include "BDI_Header.hpp"
 
 int main(){
     // Test cases:

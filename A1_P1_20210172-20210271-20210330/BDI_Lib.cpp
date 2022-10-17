@@ -49,16 +49,18 @@ int BigDecimalInt::sign(){
 }
 
 BigDecimalInt BigDecimalInt::inv(BigDecimalInt x){
-if(decStr[0] = '-'){
-    decStr.erase(0, 1);
+    string result = x.getDecStr();
+if(result[0] == '-'){
+    result.erase(0, 1);
 }
-else if(decStr[0] = '+'){
-    decStr[0] = '-';
+else if(result[0] == '+'){
+    result[0] = '-';
 }
 else{
-    decStr = "-" + decStr;
+    result = "-" + result;
 }
-return BigDecimalInt(decStr);
+    BigDecimalInt inverted(result);
+return inverted;
 }
 
 // Overloading the plus operator to work with BigDecimalInt objects
@@ -192,10 +194,11 @@ BigDecimalInt BigDecimalInt::operator- (BigDecimalInt & anotherDec){
     while(result[0] == '0'){
         result.erase(0, 1);
     }
+    BigDecimalInt final(result);
     if(inverse){
-        return inv(BigDecimalInt(result));
+        final = inv(final);
     }
-    return BigDecimalInt(result);
+    return final;
 }
 
 // Overloading the greater than ">" operator to work with BigDecimalInt objects
@@ -326,7 +329,7 @@ BigDecimalInt BigDecimalInt::operator = (BigDecimalInt anotherDec){
 }
         
 // Overload the exertion operator "<<" to print objects
- ostream & operator << (ostream & out, BigDecimalInt b){
+ostream & operator << (ostream & out, BigDecimalInt b){
     // Check if the first character is a "+" sign & if so, erase it
     if(b.getDecStr()[0] == '+'){
         b.decStr.erase(0, 1);

@@ -18,32 +18,30 @@ vector<string> fileToVector(fstream &file)
 // Function to compare two files char by char
 void compByChar(fstream &firstFile, fstream &secondFile)
 {
+    int diffInSize = 0;
     // load firstFile to v1 line by line
     vector<string>v1(fileToVector(firstFile));
     // load secondFile to v2 line by line
     vector<string>v2(fileToVector(secondFile));
     bool swp = false;
     // make two vectors equal in length
-    while (v1.size() > v2.size())
+    while (v1.size() > v2.size()){
         v2.emplace_back("*");
+        diffInSize++;
+    }
 
     while (v1.size() < v2.size())
     {
         v1.emplace_back("*");
         swp = true;
+        diffInSize++;
     }
-    //get the greatest vector
-    if (swp)
-        v1.swap(v2);
-
-    for (int i = 0; i< (int)v1.size(); ++i)
-    {
-        // compare each line char by char
-        if(v1[i] != v2[i])
+        if(v1[i] != v2[i] || (v1[i] == v2[i] && v1[i] == "*" && diffInSize))
         {
             cout << "Line number " << i + 1 << " is different and it is:\n";
             cout << v1[i];
             return;
+
         }
     }
     cout << "Two files are identical\n";
@@ -52,6 +50,7 @@ void compByChar(fstream &firstFile, fstream &secondFile)
 // Function to compare file word by word
 void compByWord(fstream &firstFile, fstream &secondFile)
 {
+    int diffInSize = 0;
     // load firstFile to v1 line by line
     vector<string>v1(fileToVector(firstFile));
     // load secondFile to v2 line by line
@@ -59,12 +58,14 @@ void compByWord(fstream &firstFile, fstream &secondFile)
     string wordOfF1,wordOfF2;
     bool swp = false;
     // make two vectors equal in length
-    while (v1.size() > v2.size())
+    while (v1.size() > v2.size()){
         v2.emplace_back("*");
-
+        diffInSize++;
+    }
     while (v1.size() < v2.size())
     {
         v1.emplace_back("*");
+        diffInSize++;
         swp = true;
     }
     //get the greatest vector
@@ -80,7 +81,7 @@ void compByWord(fstream &firstFile, fstream &secondFile)
         {
             ss2 >> wordOfF2;
 
-            if (wordOfF1 != wordOfF2)
+            if (wordOfF1 != wordOfF2 || ((wordOfF1 == "*" || wordOfF2 == "*") && diffInSize))
             {
                 cout <<"word "<< wordOfF1 << " is different and exist in that line:\n";
                 cout << v1[i];
@@ -101,7 +102,7 @@ void Menu()
     // check if file opened or not
     if(fl1.fail())
     {
-        cout << "can't open file1";
+        cout << "can't open file1\n";
         return;
     }
 
@@ -115,10 +116,10 @@ void Menu()
     }
 
     string choice;
-    cout << "Menu:\n\t1) Compare by char\n\t2) Compare by word\n\t0) exit";
-    cout << "Enter number from [1-2]: ";
+    cout << "Menu:\n\t1) Compare by char\n\t2) Compare by word\n\t0) exit\n";
+    cout << "Enter number from [0-2]: ";
     cin >> choice;
-    while (choice != "1" and choice != "2")
+    while (choice != "1" && choice != "2")
     {
         cout << "invalid input\n";
         cout << "Enter number from [1-2]\n";

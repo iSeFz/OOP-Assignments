@@ -68,6 +68,7 @@ BigDecimalInt BigDecimalInt::operator + (BigDecimalInt & anotherDec){
     string finalAns, temp;
     string firstStr = decStr;
     string secondStr = anotherDec.getDecStr();
+    int firstIsNeg = 0, secondIsNeg = 0;
     int carry = 0;
     // Check for the sign of the number before beginning the addition process
     if(firstStr[0] == '+'){
@@ -78,7 +79,50 @@ BigDecimalInt BigDecimalInt::operator + (BigDecimalInt & anotherDec){
     }
 
     // Check for the minus sign is still uncovered !!
+    if(firstStr[0] == '-'){
+        firstIsNeg = 1;
+    }
+    if(secondStr[0] == '-'){
+        secondIsNeg = 1;
+    }
 
+    // This solution fully depends on - operator
+    if(firstIsNeg){
+        firstStr.erase(0,1);
+        BigDecimalInt firstBig(firstStr);
+        BigDecimalInt secondBig(secondStr);
+        return(secondBig - firstBig);
+    }
+    if(secondIsNeg){
+        secondStr.erase(0,1);
+        BigDecimalInt firstBig(firstStr);
+        BigDecimalInt secondBig(secondStr);
+        return(firstBig - secondBig);
+    }
+
+    //Another solution
+    /*
+    if(firstIsNeg && !secondIsNeg){
+        firstStr.erase(0,1);
+        BigDecimalInt firstBig(firstStr);
+        BigDecimalInt secondBig(secondStr);
+        return(secondBig - firstBig);
+    }
+    if(!firstIsNeg && secondIsNeg){
+        secondStr.erase(0,1);
+        BigDecimalInt firstBig(firstStr);
+        BigDecimalInt secondBig(secondStr);
+        return(firstBig - secondBig);
+    }
+    if(firstIsNeg && secondIsNeg){
+        firstStr.erase(0, 1);
+        secondStr.erase(0,1);
+        BigDecimalInt firstBig(firstStr);
+        BigDecimalInt secondBig(secondStr);
+
+        return(inv(firstBig + secondBig));
+    }
+     */
     int sizeDifference = firstStr.size() - secondStr.size();
     // Add zeros in the beginning of the smaller sized number
     if(sizeDifference < 0){

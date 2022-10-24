@@ -36,6 +36,7 @@ void compByChar(fstream &firstFile, fstream &secondFile)
         swp = true;
         diffInSize++;
     }
+    for(int i=0;i<(int)v1.size();i++){
         if(v1[i] != v2[i] || (v1[i] == v2[i] && v1[i] == "*" && diffInSize))
         {
             cout << "Line number " << i + 1 << " is different and it is:\n";

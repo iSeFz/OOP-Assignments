@@ -9,32 +9,31 @@ struct dominoT{
 
 vector<dominoT> chain;
 
+// Function that checks if a chain can be formed with the given domino tiles
 bool FormsDominoChain(vector <dominoT> & dominos){
     dominoT piece;
-    if (dominos.empty()){
+    
+    // If input vector gets empty it means that all tiles are in the chain
+    if (dominos.empty()){ 
         return true;
     }
-    for (int i = 0; i < dominos.size(); i++)
-    {
+
+    // Loop that iterates over dominos vector
+    for (int i = 0; i < dominos.size(); i++){
         piece = {dominos[i].leftDots, dominos[i].rightDots};
-        if (chain.empty()){
-            chain.push_back(piece);
-            dominos.erase(dominos.begin() + i);
-            if(FormsDominoChain(dominos)){
+
+        // If the chain is empty, add the first domino tile to it
+        if (chain.empty() || chain.back().rightDots == dominos[i].leftDots){
+            chain.push_back(piece); // Adding the domino tile
+            dominos.erase(dominos.begin() + i); // Erasing the tile form dominos vector
+            
+            // Recursive call to check if the chain can be formed with the remaining tiles
+            if(FormsDominoChain(dominos)){ 
                 return true;
             }
-            chain.pop_back();
-            dominos.insert(dominos.begin() + i, piece);
-        }
-        else{
-            if (chain.back().rightDots == dominos[i].leftDots){
-            chain.push_back(piece);
-            dominos.erase(dominos.begin() + i);
-            if(FormsDominoChain(dominos)){
-                return true;
-            }
-            chain.pop_back();
-            dominos.insert(dominos.begin() + i, piece);
+            else{
+                dominos.insert(dominos.begin() + i, piece); // If the chain cannot be formed, add the tile back to the input vector
+                chain.pop_back(); // Remove the tile from the chain
             }
         }
     }
@@ -49,12 +48,14 @@ int main(){
     dominoT d3 = {4,4};
     dominoT d4 = {6,1};
     dominoT d5 = {4,3};
+    dominoT d6 = {2,1};
 
     dominos.push_back(d1);
     dominos.push_back(d3);
     dominos.push_back(d4);
     dominos.push_back(d5);
     dominos.push_back(d2);
+    dominos.push_back(d6);
 
     int once = 0;
     if(FormsDominoChain(dominos)){

@@ -23,5 +23,28 @@ int main(){
     cout << "num2 + num1 = " << num4 << endl;
     // Next statement will print -10000000001000000000100000000
     cout << "num2 - num1 = " << num5 << endl;
+
+    // Our test cases
+    BigDecimalInt test1(3040);
+    BigDecimalInt test2("-44429377737373787339304");
+    BigDecimalInt test3("+999938738732133");
+    BigDecimalInt test4("-1033720303003003030");
+    BigDecimalInt test5(-19999);
+    BigDecimalInt result1 = test2 - test5;
+    BigDecimalInt result2 = test3 - test4;
+    // The next statement will print 999938738732133
+    cout << "test3 = " << test3 << endl;
+    // The next statement will print −44428344017070784336274
+    cout << "test2 - test4 = " << test2 - test4 << endl;
+    // The next statement will print 1034720241741735163
+    cout << "test3 - test4 = "<< result2 << endl;
+    // The next statement will print −1033720303002999990
+    cout << "test1 + test4 = " << test1 + test4 << endl;
+    // The next statement will print -44429377737373787319305
+    cout << "test2 - test5 = " << result1 << endl;
+    // The next statement will print true
+    cout << "test1 > test2 is " << std::boolalpha << (test1 > test2) << endl;
+    // The next statement will print false
+    cout << "test4 > test3 is " << std::boolalpha << (test4 > test3) << endl;
     return 0;
 }

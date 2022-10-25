@@ -58,7 +58,10 @@ int main(){
     dominos.push_back(d6);
 
     int once = 0;
+
+    // Prints chain if it can be formed or not
     if(FormsDominoChain(dominos)){
+        cout << "Chain formed: \n";
         for(dominoT i : chain){
             if(!once){
                 cout << i.leftDots << "|" << i.rightDots;

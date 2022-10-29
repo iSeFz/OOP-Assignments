@@ -1,7 +1,19 @@
+// FCAI – Object-Oriented Programming 1 – 2022 - Assignment 1
+// Program Name: BigDecimalInt
+// Last Modification Date: 13/10/2022
+// Author1 and ID and Group: Basmala Mohamed Sayed Gad  ID: 20210090 (a, b, c)
+// Author2 and ID and Group: Aya Ali Hassan  ID: 20210083 (d, e)
+// Author3 and ID and Group: Mohamed Ashraf Fahim  ID: 20210329 (f, i, j , k)
+/*
+description: In this problem we developed a new C++ type (class).
+that can hold unlimited decimal integer values and performs arithmetic operations on them.
+such as: +, -, <, and >.
+ */
+
 #include "BigDecimalIntClass.h"
 
 int main() {
-    string n1 = "-34", n2 = "100", n3 = "-500", n4 = "7";
+/*    string n1 = "-34", n2 = "100", n3 = "-500", n4 = "7";
 
     BigDecimalInt input(n1), input3(n2);
     BigDecimalInt e = input + input3;
@@ -111,9 +123,25 @@ int main() {
     cout << (test9 < test10) << "\n";
     cout << (test9 > test10) << "\n";
     cout << test9.Sign() << "\n";
-    cout << test10.size() << "\n";
+    cout << test10.size() << "\n";*/
+    string s1,s2;
+    while(cin>>s1>>s2){
+        BigDecimalInt a(s1),b(s2);
+        cout<<a+b<<endl;
+        cout<<a-b<<endl;
+        cout<<b-a<<endl;
+        cout << (a < b) << "\n";
+        cout << (a > b) << "\n";
+        cout << a.Sign() << "\n";
+        cout << b.size() << "\n";
+        a.push_front('0');
+        b.push_back('0');
+        cout << a << "\n";
+        cout << b << "\n";
+    }
 
     return 0;
 }
+
 
 

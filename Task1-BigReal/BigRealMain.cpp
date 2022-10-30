@@ -12,14 +12,21 @@ Version: 1.0
 #include "BigRealClass.hpp"
 
 int main(){
-    // Should print INVALID FORMAT!!
+
+    /*// Should print INVALID FORMAT!!
     BigReal n0("+124857.+38383");
     BigReal n1("1.1.1");
+     */
     // Should print nothing
     BigReal n2(+5.290392);
     BigReal n3("-34.00000003");
     BigReal n4("11.9000000000000000000000000000000001");
     BigReal n5("2333333333339.1134322222222292");
+    // test insertion operator
+    BigReal test2;
+    cin >> test2;
+    cout << test2;
+    /*
     // Testing the assignment operator
     cout << "\nTesting the assignment operator!\n";
     BigReal n7;
@@ -33,5 +40,7 @@ int main(){
     BigReal tst2(tst1);
     cout << "Value of tst1 is " << tst1.getRealStr() << endl;
     cout << "Value of tst2 is " << tst2.getRealStr() << endl;
+     */
+
     return 0;
 }

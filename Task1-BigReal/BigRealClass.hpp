@@ -11,13 +11,12 @@ using namespace std;
 class BigReal{
     // Private section that contain data members and private functions
     private:
-        string realStr;
+        BigDecimalInt modifiedReal;
+        int pointPosition;
         bool isValidInput(string bigStr);
+        void removeDecimalPoint(string & realStr);
+        string returnPoint();
     public:
-        // Getter function to get the value of realStr
-        string getRealStr();
-        // Setter function to set the value of realStr
-        void setRealStr(string newReal);
         // Default constructor function that accept double as parameter
         BigReal(double real = 0.0);
         // Overload the constructor function to accept string as parameter
@@ -47,13 +46,13 @@ class BigReal{
         // Function to return sign of BigReal
         int sign();
         // Declare friend functions to have access to all class data members
-        friend ostream & operator << (ostream & out, BigReal real);
-        friend istream & operator >> (istream & in, BigReal real);
+        friend ostream & operator << (ostream & out, BigReal & real);
+        friend istream & operator >> (istream & in, BigReal & real);
 };
 
 // Overloading the exertion operator "<<" to print objects
-ostream & operator << (ostream & out, BigReal real);
+ostream & operator << (ostream & out, BigReal & real);
 // Overloading the insertion operator ">>" to take input
-istream & operator >> (istream & in, BigReal real);
+istream & operator >> (istream & in, BigReal & real);
 
 #endif

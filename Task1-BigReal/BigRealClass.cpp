@@ -1,10 +1,5 @@
 #include "BigRealClass.hpp"
 
-// Getter function to get the value of realStr
-string BigReal :: getRealStr(){ return realStr; }
-
-// Setter function to set the value of data member
-void BigReal :: setRealStr(string newReal){ realStr = newReal; }
 
 // Function to check if the input is valid or not
 bool BigReal :: isValidInput(string bigStr)
@@ -16,7 +11,8 @@ BigReal :: BigReal(double real){
     if (!isValidInput(to_string(real)))
         { cerr << "INVALID FORMAT!!\n"; }
     // Assign the value of double to the realStr
-    realStr = to_string(real);
+    string realStr = to_string(real);
+    removeDecimalPoint(realStr);
 }
 
 // Overload the constructor function to accept string as parameter
@@ -25,24 +21,48 @@ BigReal :: BigReal(string real){
     if (!isValidInput(real))
         { cerr << "INVALID FORMAT!!\n"; }
     // Assign the value of string to the realStr
-    realStr = real;
+    removeDecimalPoint(real);
 }
 
-// Copy constructor to copy objects into each other
-BigReal :: BigReal(const BigReal & other){
-    // Create a new pointer to the realStr
-    string * realNum = new string;
-    // Assign the value of the passed object to the pointer
-    *realNum = other.realStr;
-    // Assign the value of the pointer to the realStr
-    realStr = *realNum;
-    // Delete the pointer to avoid memory leak
-    delete realNum;
+// Overload the exertion operator to print BigReal in console
+ostream & operator << (ostream & out, BigReal & real){
+    // if number is negative
+    if(!real.sign())
+        out << '-';
+    out << real.returnPoint();
+    return out;
+}
+// Overload the insertion operator to take input from user and initialize BigReal
+istream & operator >> (istream & in, BigReal & real){
+    string realStr;
+    in >> realStr;
+    real.removeDecimalPoint(realStr);
+    return in;
 }
 
-// Overload the assignment operator to assign values to realStr
-BigReal & BigReal :: operator = (BigReal & other){
-    realStr = other.getRealStr();
-    // Return the lvalue, assuming num1 = num2, return "num1"
-    return *this;
+// Sign function
+int BigReal:: sign(){
+    return modifiedReal.Sign();
+}
+// Function to remove decimal point and store its position
+void BigReal:: removeDecimalPoint(string & realStr){
+    pointPosition =  realStr.find('.');
+    string realWithoutPoint;
+    // case if real number entered with sign char
+    if(realStr[0] == '+' || realStr[0] == '-'){
+        realWithoutPoint = realStr.erase(pointPosition,1);
+        pointPosition--; // to take sign position in consideration
+    }
+    else{
+        realWithoutPoint = realStr.erase(pointPosition,1);
+    }
+    modifiedReal = BigDecimalInt(realWithoutPoint);
+}
+
+// Function to return decimal point to its original position
+string BigReal:: returnPoint(){
+    string realNumber = modifiedReal.getnum();
+    // return decimal point to its original position
+    realNumber.insert(pointPosition, ".");
+    return realNumber;
 }

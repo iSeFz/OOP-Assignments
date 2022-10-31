@@ -16,7 +16,7 @@ class BigReal{
         bool isValidInput(string bigStr);
         void removeDecimalPoint(string & realStr);
         string returnPoint();
-        string getModifiedReal();
+        BigDecimalInt & getModifiedReal();
     public:
         // Default constructor function that accept double as parameter
         BigReal(double real = 0.0);

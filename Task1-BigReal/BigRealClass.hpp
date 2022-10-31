@@ -16,6 +16,7 @@ class BigReal{
         bool isValidInput(string bigStr);
         void removeDecimalPoint(string & realStr);
         string returnPoint();
+        string getModifiedReal();
     public:
         // Default constructor function that accept double as parameter
         BigReal(double real = 0.0);
@@ -36,9 +37,9 @@ class BigReal{
         // Overloading the minus operator to work with BigReal objects
         BigReal operator - (BigReal & other);
         // Overloading the less than "<" operator to work with BigReal objects
-        bool operator < (BigReal anotherReal);
+        bool operator < (BigReal & anotherReal);
         // Overloading the greater than ">" operator to work with BigReal objects
-        bool operator > (BigReal anotherReal);
+        bool operator > (BigReal & anotherReal);
         // Overloading the equality "==" operator to check if the two numbers are equal
         bool operator == (BigReal & anotherReal);
         // Function to return size of BigReal

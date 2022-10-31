@@ -27,6 +27,23 @@ BigReal :: BigReal(string real){
     // Assign the value of string to the realStr
     removeDecimalPoint(real);
 }
+// Overload the greater than operator
+bool BigReal:: operator > (BigReal & anotherReal){
+    // make two objects have same number of digits
+    if(modifiedReal.size() > anotherReal.size()){
+        int numOfZeros = modifiedReal.size() - anotherReal.size();
+        BigDecimalInt firstNum(modifiedReal.getnum());
+        BigDecimalInt secondNum(anotherReal.getModifiedReal()+string(numOfZeros,'0'));
+        return firstNum > secondNum;
+    }
+    else{
+        int numOfZeros = anotherReal.size() - modifiedReal.size();
+        BigDecimalInt firstNum(modifiedReal.getnum() + string(numOfZeros,'0'));
+        BigDecimalInt secondNum(anotherReal.getModifiedReal());
+        return firstNum > secondNum;
+    }
+
+}
 // Overload the equality operator
 bool BigReal:: operator == (BigReal & anotherReal){
     if(modifiedReal == anotherReal.modifiedReal)

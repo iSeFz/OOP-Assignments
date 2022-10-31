@@ -40,7 +40,7 @@ class BigReal{
         // Overloading the greater than ">" operator to work with BigReal objects
         bool operator > (BigReal anotherReal);
         // Overloading the equality "==" operator to check if the two numbers are equal
-        bool operator == (BigReal anotherReal);
+        bool operator == (BigReal & anotherReal);
         // Function to return size of BigReal
         int size();
         // Function to return sign of BigReal

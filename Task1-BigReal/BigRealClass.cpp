@@ -23,6 +23,12 @@ BigReal :: BigReal(string real){
     // Assign the value of string to the realStr
     removeDecimalPoint(real);
 }
+// Overload the equality operator
+bool BigReal:: operator == (BigReal & anotherReal){
+    if(modifiedReal == anotherReal.modifiedReal)
+        return true;
+    return false;
+}
 
 // Overload the exertion operator to print BigReal in console
 ostream & operator << (ostream & out, BigReal & real){

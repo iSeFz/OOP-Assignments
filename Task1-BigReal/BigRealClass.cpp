@@ -5,8 +5,8 @@
 bool BigReal :: isValidInput(string bigStr)
     { return (regex_match(bigStr, regex("^[+-]?[0-9]+[.]?[0-9]*$"))); }
 // Getter function to get number carried by object modifiedReal
-string BigReal:: getModifiedReal(){
-    return modifiedReal.getnum();
+BigDecimalInt & BigReal:: getModifiedReal(){
+    return modifiedReal;
 }
 
 // Default constructor function that accept double as parameter
@@ -27,22 +27,41 @@ BigReal :: BigReal(string real){
     // Assign the value of string to the realStr
     removeDecimalPoint(real);
 }
+//Overload the smaller than operator
+bool BigReal:: operator < (BigReal & anotherReal){
+    // make two objects have same number of digits
+    if(modifiedReal.size() > anotherReal.size()){
+        int numOfZeros = modifiedReal.size() - anotherReal.size();
+        BigDecimalInt firstNum(modifiedReal.getnum());
+        BigDecimalInt secondNum(anotherReal.getModifiedReal().getnum()+string(numOfZeros,'0'));
+        return firstNum < secondNum;
+    }
+    else if (modifiedReal.size() < anotherReal.size()){
+        int numOfZeros = anotherReal.size() - modifiedReal.size();
+        BigDecimalInt firstNum(modifiedReal.getnum() + string(numOfZeros,'0'));
+        BigDecimalInt secondNum(anotherReal.getModifiedReal());
+        return firstNum < secondNum;
+    }
+    // if the two object have same number of digits compare them
+    return modifiedReal < anotherReal.getModifiedReal();
+}
 // Overload the greater than operator
 bool BigReal:: operator > (BigReal & anotherReal){
     // make two objects have same number of digits
     if(modifiedReal.size() > anotherReal.size()){
         int numOfZeros = modifiedReal.size() - anotherReal.size();
         BigDecimalInt firstNum(modifiedReal.getnum());
-        BigDecimalInt secondNum(anotherReal.getModifiedReal()+string(numOfZeros,'0'));
+        BigDecimalInt secondNum(anotherReal.getModifiedReal().getnum()+string(numOfZeros,'0'));
         return firstNum > secondNum;
     }
-    else{
+    else if (modifiedReal.size() < anotherReal.size()){
         int numOfZeros = anotherReal.size() - modifiedReal.size();
         BigDecimalInt firstNum(modifiedReal.getnum() + string(numOfZeros,'0'));
         BigDecimalInt secondNum(anotherReal.getModifiedReal());
         return firstNum > secondNum;
     }
-
+    // if the two object have same number of digits compare them
+    return modifiedReal > anotherReal.getModifiedReal();
 }
 // Overload the equality operator
 bool BigReal:: operator == (BigReal & anotherReal){

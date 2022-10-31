@@ -4,6 +4,10 @@
 // Function to check if the input is valid or not
 bool BigReal :: isValidInput(string bigStr)
     { return (regex_match(bigStr, regex("^[+-]?[0-9]+[.]?[0-9]*$"))); }
+// Getter function to get number carried by object modifiedReal
+string BigReal:: getModifiedReal(){
+    return modifiedReal.getnum();
+}
 
 // Default constructor function that accept double as parameter
 BigReal :: BigReal(double real){
@@ -44,6 +48,11 @@ istream & operator >> (istream & in, BigReal & real){
     in >> realStr;
     real.removeDecimalPoint(realStr);
     return in;
+}
+
+// size function
+int BigReal:: size(){
+    return modifiedReal.size();
 }
 
 // Sign function

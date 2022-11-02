@@ -83,39 +83,45 @@ BigReal & BigReal :: operator = (BigReal && other){
     return *this;
 }
 
-// Overload the plus operator to work with BigReal objects
-BigReal operator + (BigReal & other){
-    
-    int sizeDiff = 6;     //(other.size() - other.pointPosition) - (this->size() - this->pointPosition);
-    // Check if the size difference is positive or negative
-    string firstNum = this->getModifiedReal;
-    string secondNum = other.getModifiedReal;
-    if(sizeDiff > 0){
-        // If the size difference is positive
-        // Add zeros to the end of the number
-        for(int i = 0; i < sizeDiff; i++)
-            { firstNum += "0"; }
-    }
-    else{
-        // If the size difference is negative
-        // Add zeros to the end of the number
-        for(int i = 0; i < abs(sizeDiff); i++)
-            { secondNum += "0"; }
-    }
-    BigDecimalInt result = firstNum + secondNum;
-    int newPosition;
-    if(this->pointPosition > other.pointPosition)
-        { newPosition = this->pointPosition + (result.size() > this->size()); }
-    else
-        { newPosition = other.pointPosition +(result.size() > other.size()); }
-    string resultStr = result.getnum();
-    resultStr.insert(newPosition, ".");
-    return BigReal(resultStr);
-}
+//Overload the plus operator to work with BigReal objects
+     string BigReal :: operator + (BigReal & other){
 
-// Overload the minus operator to work with BigReal objects
-BigReal operator - (BigReal & other){
-}
+     int sizeDiff = (other.size() - other.pointPosition) - (this->size() - this->pointPosition);
+     // Check if the size difference is positive or negative
+     char sign1 = modifiedReal.Sign() ? '+':'-';
+     char sign2 = modifiedReal.Sign() ? '+':'-';
+     string firstNum = sign1 + modifiedReal.getnum();
+     string secondNum = sign2 + other.modifiedReal.getnum();
+     int newPosition;
+     if(sizeDiff > 0){
+          //If the size difference is positive
+          //Add zeros to the end of the number
+         for(int i = 0; i < sizeDiff; i++)
+             { firstNum += "0";
+             newPosition = (other.size() - other.pointPosition);
+              }
+     }
+     else{
+         // If the size difference is negative
+         // Add zeros to the end of the number
+         for(int i = 0; i < abs(sizeDiff); i++)
+             { secondNum += "0";
+              }
+         newPosition = (this->size() - this->pointPosition);
+     }
+     // 99.1
+     // 5.0
+     // 104.1
+     BigDecimalInt result = BigDecimalInt(firstNum) - BigDecimalInt(secondNum);
+    //  if(this->pointPosition > other.pointPosition)
+    //      { newPosition = this->pointPosition + (result.size() > this->size()); }
+    //  else
+    //      { newPosition = other.pointPosition + (result.size() > other.size()); }
+     string resultStr = result.getnum();
+     resultStr.insert(resultStr.size()-newPosition, ".");
+     BigReal final(resultStr);
+     return resultStr;
+ }
 
 //Overload the smaller than operator
 bool BigReal:: operator < (BigReal & anotherReal){

@@ -83,6 +83,40 @@ BigReal & BigReal :: operator = (BigReal && other){
     return *this;
 }
 
+// Overload the plus operator to work with BigReal objects
+BigReal operator + (BigReal & other){
+    
+    int sizeDiff = 6;     //(other.size() - other.pointPosition) - (this->size() - this->pointPosition);
+    // Check if the size difference is positive or negative
+    string firstNum = this->getModifiedReal;
+    string secondNum = other.getModifiedReal;
+    if(sizeDiff > 0){
+        // If the size difference is positive
+        // Add zeros to the end of the number
+        for(int i = 0; i < sizeDiff; i++)
+            { firstNum += "0"; }
+    }
+    else{
+        // If the size difference is negative
+        // Add zeros to the end of the number
+        for(int i = 0; i < abs(sizeDiff); i++)
+            { secondNum += "0"; }
+    }
+    BigDecimalInt result = firstNum + secondNum;
+    int newPosition;
+    if(this->pointPosition > other.pointPosition)
+        { newPosition = this->pointPosition + (result.size() > this->size()); }
+    else
+        { newPosition = other.pointPosition +(result.size() > other.size()); }
+    string resultStr = result.getnum();
+    resultStr.insert(newPosition, ".");
+    return BigReal(resultStr);
+}
+
+// Overload the minus operator to work with BigReal objects
+BigReal operator - (BigReal & other){
+}
+
 //Overload the smaller than operator
 bool BigReal:: operator < (BigReal & anotherReal){
     // make two objects have same number of digits

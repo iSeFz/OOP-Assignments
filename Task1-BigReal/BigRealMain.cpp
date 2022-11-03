@@ -12,6 +12,7 @@ Version: 3.0
 #include "BigRealClass.hpp"
 
 int main(){
+    /*
     // Should print INVALID NUMBER FORMAT!!
     BigReal n0("+124857.+38383");
     BigReal n1("1.1.1");
@@ -38,7 +39,7 @@ int main(){
     cout << "Value of tst1 is " << tst1 << endl;
     cout << "Value of tst2 is " << tst2 << endl;
     
-    /*// Testing the move assignment operator
+    // Testing the move assignment operator
     cout << "\nTesting the move assignment operator\n";
     BigReal a("50034.775");
     BigReal b = a;
@@ -50,12 +51,24 @@ int main(){
     BigReal c("-6034.00915");
     BigReal d = c;
     cout << "c = " << c << endl;
-    cout << "d = " << d << endl;*/
+    cout << "d = " << d << endl;
 
     // Testing insertion operator
     BigReal test2;
     cin >> test2;
     // Testing exertion operator
     cout << test2;
+    */
+    //5546.5466 + 6845.12 =
+    //12,391.6666
+    BigReal a("779.00990100");
+    BigReal b("22.990099");
+    BigReal c, d;
+    c = a + b;
+    d = a - b;
+    cout << a << " + " << b << " = ";
+    cout << c << endl;
+    cout << a << " - " << b << " = ";
+    cout << d;
     return 0;
 }

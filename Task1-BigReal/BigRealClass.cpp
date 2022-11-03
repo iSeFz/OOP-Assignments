@@ -104,13 +104,21 @@ BigReal &BigReal ::operator=(BigReal &&other)
 // Overload the plus operator to work with BigReal objects
 BigReal BigReal ::operator+(BigReal &other)
 {
-    int sizeDiff = (other.size() - other.pointPosition) - (this->size() - this->pointPosition);
-    // Check if the size difference is positive or negative
-    char sign1 = modifiedReal.Sign() ? '+' : '-';
-    char sign2 = modifiedReal.Sign() ? '+' : '-';
+    int newPosition = 0;
+    char sign1 {'-'},sign2 {'-'};
+    if(modifiedReal.Sign()){
+        sign1 = '+';
+    }
+
+    if(other.modifiedReal.Sign()){
+        sign2 = '+';
+    }
+
     string firstNum = sign1 + modifiedReal.getnum();
     string secondNum = sign2 + other.modifiedReal.getnum();
-    int newPosition;
+    
+    // Check if the size difference is positive or negative
+    int sizeDiff = (secondNum.size() - (other.pointPosition)) - (firstNum.size() - (this->pointPosition));
     if (sizeDiff > 0)
     {
         // If the size difference is positive
@@ -118,8 +126,10 @@ BigReal BigReal ::operator+(BigReal &other)
         for (int i = 0; i < sizeDiff; i++)
         {
             firstNum += "0";
-            newPosition = (other.size() - other.pointPosition);
+
         }
+        int pos = other.pointPosition + 1;
+        newPosition = (secondNum.size() - pos);
     }
     else
     {
@@ -129,38 +139,39 @@ BigReal BigReal ::operator+(BigReal &other)
         {
             secondNum += "0";
         }
-        newPosition = (this->size() - this->pointPosition);
+        int pos = this->pointPosition + 1;
+        newPosition = (firstNum.size() - pos);
     }
     BigDecimalInt result = BigDecimalInt(firstNum) + BigDecimalInt(secondNum);
     string resultStr = result.getnum();
-    int isNeg = 0;
-    if (resultStr[0] == '-')
-    {
-        isNeg = 1;
-        resultStr = resultStr.substr(1);
-    }
-    while(resultStr.length() < newPosition){
+    while(resultStr.size() < newPosition){
         resultStr = "0" + resultStr;
     }
-    if (isNeg)
+    if (!result.Sign())
     {
         resultStr = "-" + resultStr;
     }
-    resultStr.insert(resultStr.size() + newPosition, ".");
+    resultStr.insert(resultStr.size() - newPosition, ".");
     BigReal final(resultStr);
     return final;
 }
 
-// Overload the plus operator to work with BigReal objects
+// Overload the minus operator to work with BigReal objects
 BigReal BigReal ::operator-(BigReal &other)
 {
-    int sizeDiff = (other.size() - other.pointPosition) - (this->size() - this->pointPosition);
-    // Check if the size difference is positive or negative
-    char sign1 = modifiedReal.Sign() ? '+' : '-';
-    char sign2 = modifiedReal.Sign() ? '+' : '-';
+    int newPosition = 0;
+    char sign1 {'-'},sign2 {'-'};
+    if(modifiedReal.Sign()){
+        sign1 = '+';
+    }
+
+    if(other.modifiedReal.Sign()){
+        sign2 = '+';
+    }
     string firstNum = sign1 + modifiedReal.getnum();
     string secondNum = sign2 + other.modifiedReal.getnum();
-    int newPosition;
+    // Check if the size difference is positive or negative
+    int sizeDiff = (secondNum.size() - (other.pointPosition)) - (firstNum.size() - (this->pointPosition));
     if (sizeDiff > 0)
     {
         // If the size difference is positive
@@ -168,8 +179,10 @@ BigReal BigReal ::operator-(BigReal &other)
         for (int i = 0; i < sizeDiff; i++)
         {
             firstNum += "0";
-            newPosition = (other.size() - other.pointPosition);
+
         }
+        int pos = other.pointPosition + 1;
+        newPosition = (secondNum.size() - pos);
     }
     else
     {
@@ -179,24 +192,19 @@ BigReal BigReal ::operator-(BigReal &other)
         {
             secondNum += "0";
         }
-        newPosition = (this->size() - this->pointPosition);
+        int pos = this->pointPosition + 1;
+        newPosition = (firstNum.size() - pos);
     }
     BigDecimalInt result = BigDecimalInt(firstNum) - BigDecimalInt(secondNum);
     string resultStr = result.getnum();
-    int isNeg = 0;
-    if (resultStr[0] == '-')
-    {
-        isNeg = 1;
-        resultStr = resultStr.substr(1);
-    }
-    while(resultStr.length() < newPosition){
+    while(resultStr.size() < newPosition){
         resultStr = "0" + resultStr;
     }
-    if (isNeg)
+    if (!result.Sign())
     {
         resultStr = "-" + resultStr;
     }
-    resultStr.insert(resultStr.size() + newPosition, ".");
+    resultStr.insert(resultStr.size() - newPosition, ".");
     BigReal final(resultStr);
     return final;
 }

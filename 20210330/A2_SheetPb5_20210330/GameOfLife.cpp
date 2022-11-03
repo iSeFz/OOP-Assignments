@@ -25,7 +25,7 @@ void Universe::display() {
     for (int i = 1; i < SIZE + 1; ++i) {
         for (int j = 1; j < SIZE + 1 ; ++j) {
             // if the cell is alive print ◼ else print ◻
-            string ch = (board[i][j]) ? "◼":"◻";
+            string ch = (board[i][j]) ? "#":".";
             cout << ch << " ";
         }
         cout << endl;

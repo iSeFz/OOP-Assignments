@@ -3,13 +3,12 @@
 #define SIZE 20
 #if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
 #define CLEAR "cls"
-#include <windows.h>
 #else
 #define CLEAR "clear"
-#include <unistd.h>
 #endif
 #include <iostream>
 #include <fstream>
+#include <unistd.h>
 using namespace std;
 
 class Universe{

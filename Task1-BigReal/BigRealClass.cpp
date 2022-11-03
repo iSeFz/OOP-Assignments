@@ -102,9 +102,8 @@ BigReal &BigReal ::operator=(BigReal &&other)
 }
 
 // Overload the plus operator to work with BigReal objects
-string BigReal ::operator+(BigReal &other)
+BigReal BigReal ::operator+(BigReal &other)
 {
-
     int sizeDiff = (other.size() - other.pointPosition) - (this->size() - this->pointPosition);
     // Check if the size difference is positive or negative
     char sign1 = modifiedReal.Sign() ? '+' : '-';
@@ -132,18 +131,74 @@ string BigReal ::operator+(BigReal &other)
         }
         newPosition = (this->size() - this->pointPosition);
     }
-    // 99.1
-    // 5.0
-    // 104.1
-    BigDecimalInt result = BigDecimalInt(firstNum) - BigDecimalInt(secondNum);
-    //  if(this->pointPosition > other.pointPosition)
-    //      { newPosition = this->pointPosition + (result.size() > this->size()); }
-    //  else
-    //      { newPosition = other.pointPosition + (result.size() > other.size()); }
+    BigDecimalInt result = BigDecimalInt(firstNum) + BigDecimalInt(secondNum);
     string resultStr = result.getnum();
-    resultStr.insert(resultStr.size() - newPosition, ".");
+    int isNeg = 0;
+    if (resultStr[0] == '-')
+    {
+        isNeg = 1;
+        resultStr = resultStr.substr(1);
+    }
+    while(resultStr.length() < newPosition){
+        resultStr = "0" + resultStr;
+    }
+    if (isNeg)
+    {
+        resultStr = "-" + resultStr;
+    }
+    resultStr.insert(resultStr.size() + newPosition, ".");
     BigReal final(resultStr);
-    return resultStr;
+    return final;
+}
+
+// Overload the plus operator to work with BigReal objects
+BigReal BigReal ::operator-(BigReal &other)
+{
+    int sizeDiff = (other.size() - other.pointPosition) - (this->size() - this->pointPosition);
+    // Check if the size difference is positive or negative
+    char sign1 = modifiedReal.Sign() ? '+' : '-';
+    char sign2 = modifiedReal.Sign() ? '+' : '-';
+    string firstNum = sign1 + modifiedReal.getnum();
+    string secondNum = sign2 + other.modifiedReal.getnum();
+    int newPosition;
+    if (sizeDiff > 0)
+    {
+        // If the size difference is positive
+        // Add zeros to the end of the number
+        for (int i = 0; i < sizeDiff; i++)
+        {
+            firstNum += "0";
+            newPosition = (other.size() - other.pointPosition);
+        }
+    }
+    else
+    {
+        // If the size difference is negative
+        // Add zeros to the end of the number
+        for (int i = 0; i < abs(sizeDiff); i++)
+        {
+            secondNum += "0";
+        }
+        newPosition = (this->size() - this->pointPosition);
+    }
+    BigDecimalInt result = BigDecimalInt(firstNum) - BigDecimalInt(secondNum);
+    string resultStr = result.getnum();
+    int isNeg = 0;
+    if (resultStr[0] == '-')
+    {
+        isNeg = 1;
+        resultStr = resultStr.substr(1);
+    }
+    while(resultStr.length() < newPosition){
+        resultStr = "0" + resultStr;
+    }
+    if (isNeg)
+    {
+        resultStr = "-" + resultStr;
+    }
+    resultStr.insert(resultStr.size() + newPosition, ".");
+    BigReal final(resultStr);
+    return final;
 }
 
 // Overload the smaller than operator

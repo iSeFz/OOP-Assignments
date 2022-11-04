@@ -15,18 +15,16 @@ class BigReal{
         // Store the point position to preserve it
         int pointPosition;
         // Check if the input is valid or not
-        bool isValidInput(string bigStr);
-        // Remove the decimal point before passing the number to the BigDecimalInt class
-        void removeDecimalPoint(string & realStr);
-        // Return the decimal point to its original position after making operations
-        string returnPoint();
+        bool isValidInput(string longStr);
     public:
         // Getter function to get the modifiedReal value
         BigDecimalInt & getModifiedReal();
+        // Setter function to set the modifiedReal value
+        void setModifiedReal(string realStr);
         // Default constructor function that accept double as parameter
-        BigReal(double real = 0.0);
+        BigReal(double realDouble = 0.0);
         // Overload the constructor function to accept string as parameter
-        BigReal(string real);
+        BigReal(string realStr);
         // Overload the constructor function to accept BigDecimalInt objects as parameter
         BigReal(BigDecimalInt bigInteger);
         // Copy constructor to copy objects into each other
@@ -42,23 +40,23 @@ class BigReal{
         // Overload the minus operator to work with BigReal objects
         BigReal operator - (BigReal & other);
         // Overload the less than "<" operator to work with BigReal objects
-        bool operator < (BigReal & anotherReal);
+        bool operator < (BigReal anotherReal);
         // Overload the greater than ">" operator to work with BigReal objects
-        bool operator > (BigReal & anotherReal);
+        bool operator > (BigReal anotherReal);
         // Overload the equality "==" operator to check if the two numbers are equal
-        bool operator == (BigReal & anotherReal);
+        bool operator == (BigReal anotherReal);
         // Return size of BigReal
         int size();
         // Return sign of BigReal
         int sign();
         // Declare friend functions to have access to all class data members
-        friend ostream & operator << (ostream & out, BigReal & real);
-        friend istream & operator >> (istream & in, BigReal & real);
+        friend ostream & operator << (ostream & out, BigReal real);
+        friend istream & operator >> (istream & in, BigReal real);
 };
 
 // Overload the exertion operator "<<" to print objects
-ostream & operator << (ostream & out, BigReal & real);
+ostream & operator << (ostream & out, BigReal real);
 // Overload the insertion operator ">>" to take input
-istream & operator >> (istream & in, BigReal & real);
+istream & operator >> (istream & in, BigReal real);
 
 #endif

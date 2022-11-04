@@ -1,9 +1,9 @@
 #include "BigRealClass.hpp"
 
 // Check if the input is valid or not
-bool BigReal ::isValidInput(string bigStr)
+bool BigReal ::isValidInput(string longStr)
 {
-    return (regex_match(bigStr, regex("^[+-]?[0-9]+[.]?[0-9]*$")));
+    return (regex_match(longStr, regex("^[+-]?[0-9]+[.]?[0-9]*$")));
 }
 
 // Getter function to get number carried by object modifiedReal
@@ -12,43 +12,93 @@ BigDecimalInt &BigReal::getModifiedReal()
     return modifiedReal;
 }
 
-// Default constructor function that accept double as parameter
-BigReal ::BigReal(double real)
+// Setter function to set the number carried by object modifiedReal
+void BigReal ::setModifiedReal(string realStr)
 {
-    string doubleStr = to_string(real);
-    if (!isValidInput(doubleStr))
+    // Check for valid input format of BigReal string
+    if (!isValidInput(realStr))
     {
-        cout << "INVALID NUMBER FORMAT!!\n";
+        cerr << "INVALID NUMBER FORMAT!!\n";
+        return;
     }
-    // Pass the double value after casting it to string
-    // To remove the decimal point and assign its value to the modifiedReal
-    removeDecimalPoint(doubleStr);
+    // Check if there is a sign at the beginning of number
+    // If so, start scanning after the sign character
+    int i = 0;
+    if (realStr[0] == '+' || realStr[0] == '-')
+    {
+        i = 1;
+    }
+
+    // Remove leading zeros on the left of number
+    for (i; i < realStr.length(); ++i)
+    {
+        if (realStr[i] == '0')
+        {
+            realStr.erase(i, 1);
+            // Decrement "i" to overcome the decrease in size of string
+            i--;
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    // Remove trailing zeros on the right of number
+    for (int j = realStr.length() - 1; j > 0; --j)
+    {
+        if (realStr[j] == '0')
+        {
+            realStr.erase(j, 1);
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    if (realStr.find('.') < realStr.length())
+    {
+        // Get point position from the right
+        pointPosition = (realStr.length()) - (realStr.find('.')) - 1;
+        // Remove the point from the string after storing its position
+        realStr.erase((realStr.length() - pointPosition - 1), 1);
+    }
+    // Assign the value of the modifiedReal with
+    // the removed decimal point string as a BigDecimalInt object
+    modifiedReal = BigDecimalInt(realStr);
+}
+
+// Default constructor function that accept double as parameter
+BigReal ::BigReal(double realDouble)
+{
+    // If the default constructor is called assign modifiedReal with "0"
+    if (realDouble == 0.0)
+    {
+        modifiedReal = BigDecimalInt("0");
+        return;
+    }
+    // Convert the double number into string
+    string doubleStr;
+    doubleStr = to_string(realDouble);
+    // Call the setter function to set the value of modifiedReal by the passed number
+    setModifiedReal(doubleStr);
 }
 
 // Overload the constructor function to accept string as parameter
-BigReal ::BigReal(string real)
+BigReal ::BigReal(string realStr)
 {
-    if (!isValidInput(real))
-    {
-        cout << "INVALID NUMBER FORMAT!!\n";
-    }
-    // Pass the string to remove the decimal point
-    // And assign its value to the modifiedReal
-    removeDecimalPoint(real);
+    // Call the setter function to set the value of modifiedReal by the passed string
+    setModifiedReal(realStr);
 }
 
-// Overload the constructor function to accept
-// BigDecimalInt objects as a parameter
+// Overload the constructor function to accept BigDecimalInt objects as a parameter
 BigReal ::BigReal(BigDecimalInt bigInteger)
 {
-    if (!isValidInput(bigInteger.getnum()))
-    {
-        cout << "INVALID NUMBER FORMAT!!\n";
-    }
-    // Pass the string of BigDecimalInt object to assign its value
-    // To the modifiedReal after removing the decimal point
+    // Get the number inside the BigDecimalInt object
     string bigStr = bigInteger.getnum();
-    removeDecimalPoint(bigStr);
+    // Call the setter function to set the value of modifiedReal by the passed string
+    setModifiedReal(bigStr);
 }
 
 // Copy constructor to copy objects into each other
@@ -104,205 +154,55 @@ BigReal &BigReal ::operator=(BigReal &&other)
 // Overload the plus operator to work with BigReal objects
 BigReal BigReal ::operator+(BigReal &other)
 {
-    int newPosition = 0;
-    char sign1 {'-'},sign2 {'-'};
-    if(modifiedReal.Sign()){
-        sign1 = '+';
-    }
-
-    if(other.modifiedReal.Sign()){
-        sign2 = '+';
-    }
-
-    string firstNum = sign1 + modifiedReal.getnum();
-    string secondNum = sign2 + other.modifiedReal.getnum();
-    
-    // Check if the size difference is positive or negative
-    int sizeDiff = (secondNum.size() - (other.pointPosition)) - (firstNum.size() - (this->pointPosition));
-    if (sizeDiff > 0)
-    {
-        // If the size difference is positive
-        // Add zeros to the end of the number
-        for (int i = 0; i < sizeDiff; i++)
-        {
-            firstNum += "0";
-
-        }
-        int pos = other.pointPosition + 1;
-        newPosition = (secondNum.size() - pos);
-    }
-    else
-    {
-        // If the size difference is negative
-        // Add zeros to the end of the number
-        for (int i = 0; i < abs(sizeDiff); i++)
-        {
-            secondNum += "0";
-        }
-        int pos = this->pointPosition + 1;
-        newPosition = (firstNum.size() - pos);
-    }
-    BigDecimalInt result = BigDecimalInt(firstNum) + BigDecimalInt(secondNum);
-    string resultStr = result.getnum();
-    while(resultStr.size() < newPosition){
-        resultStr = "0" + resultStr;
-    }
-    if (!result.Sign())
-    {
-        resultStr = "-" + resultStr;
-    }
-    resultStr.insert(resultStr.size() - newPosition, ".");
-    BigReal final(resultStr);
+    BigDecimalInt result = this->modifiedReal + other.modifiedReal;
+    BigReal final(result);
     return final;
 }
 
 // Overload the minus operator to work with BigReal objects
 BigReal BigReal ::operator-(BigReal &other)
 {
-    int newPosition = 0;
-    char sign1 {'-'},sign2 {'-'};
-    if(modifiedReal.Sign()){
-        sign1 = '+';
-    }
-
-    if(other.modifiedReal.Sign()){
-        sign2 = '+';
-    }
-    string firstNum = sign1 + modifiedReal.getnum();
-    string secondNum = sign2 + other.modifiedReal.getnum();
-    // Check if the size difference is positive or negative
-    int sizeDiff = (secondNum.size() - (other.pointPosition)) - (firstNum.size() - (this->pointPosition));
-    if (sizeDiff > 0)
-    {
-        // If the size difference is positive
-        // Add zeros to the end of the number
-        for (int i = 0; i < sizeDiff; i++)
-        {
-            firstNum += "0";
-
-        }
-        int pos = other.pointPosition + 1;
-        newPosition = (secondNum.size() - pos);
-    }
-    else
-    {
-        // If the size difference is negative
-        // Add zeros to the end of the number
-        for (int i = 0; i < abs(sizeDiff); i++)
-        {
-            secondNum += "0";
-        }
-        int pos = this->pointPosition + 1;
-        newPosition = (firstNum.size() - pos);
-    }
-    BigDecimalInt result = BigDecimalInt(firstNum) - BigDecimalInt(secondNum);
-    string resultStr = result.getnum();
-    while(resultStr.size() < newPosition){
-        resultStr = "0" + resultStr;
-    }
-    if (!result.Sign())
-    {
-        resultStr = "-" + resultStr;
-    }
-    resultStr.insert(resultStr.size() - newPosition, ".");
-    BigReal final(resultStr);
+    BigDecimalInt result = this->modifiedReal - other.modifiedReal;
+    BigReal final(result);
     return final;
 }
 
 // Overload the smaller than operator
-bool BigReal::operator<(BigReal &anotherReal)
+bool BigReal::operator<(BigReal anotherReal)
 {
-    // make two objects have same number of digits
-    if (modifiedReal.size() > anotherReal.size())
-    {
-        int numOfZeros = modifiedReal.size() - anotherReal.size();
-        char sign = (anotherReal.getModifiedReal().Sign() == 1) ? '+' : '-';
-        string modifications = sign + anotherReal.getModifiedReal().getnum() + string(numOfZeros, '0');
-        // make number right to < have same number of digits to right one
-        BigDecimalInt rightNum(modifications);
-        return modifiedReal < rightNum;
-    }
-    else if (modifiedReal.size() < anotherReal.size())
-    {
-        int numOfZeros = anotherReal.size() - modifiedReal.size();
-        char sign = (modifiedReal.Sign() == 1) ? '+' : '-';
-        string modifications = sign + modifiedReal.getnum() + string(numOfZeros, '0');
-        // make number left to < have same number of digits to right one
-        BigDecimalInt leftNum(modifications);
-        return leftNum < anotherReal.getModifiedReal();
-    }
-    // if the two object have same number of digits compare them
-    return modifiedReal < anotherReal.getModifiedReal();
+    return (this->modifiedReal < anotherReal.modifiedReal);
 }
 
 // Overload the greater than operator
-bool BigReal::operator>(BigReal &anotherReal)
+bool BigReal::operator>(BigReal anotherReal)
 {
-    // make two objects have same number of digits
-    if (modifiedReal.size() > anotherReal.size())
-    {
-        int numOfZeros = modifiedReal.size() - anotherReal.size();
-        char sign = (anotherReal.getModifiedReal().Sign() == 1) ? '+' : '-';
-        string modifications = sign + anotherReal.getModifiedReal().getnum() + string(numOfZeros, '0');
-        // make number right to > have same number of digits to right one
-        BigDecimalInt rightNum(modifications);
-        return modifiedReal > rightNum;
-    }
-    else if (modifiedReal.size() < anotherReal.size())
-    {
-        int numOfZeros = anotherReal.size() - modifiedReal.size();
-        char sign = (modifiedReal.Sign() == 1) ? '+' : '-';
-        string modifications = sign + modifiedReal.getnum() + string(numOfZeros, '0');
-        // make number left to > have same number of digits to right one
-        BigDecimalInt leftNum(modifications);
-        return leftNum > anotherReal.getModifiedReal();
-    }
-    // if the two object have same number of digits compare them
-    return modifiedReal > anotherReal.getModifiedReal();
+    return (this->modifiedReal > anotherReal.modifiedReal);
 }
 
 // Overload the equality operator
-bool BigReal::operator==(BigReal &anotherReal)
+bool BigReal::operator==(BigReal anotherReal)
 {
-    // make two objects have same number of digits
-    if (modifiedReal.size() > anotherReal.size())
-    {
-        int numOfZeros = modifiedReal.size() - anotherReal.size();
-        char sign = (anotherReal.getModifiedReal().Sign() == 1) ? '+' : '-';
-        string modifications = sign + anotherReal.getModifiedReal().getnum() + string(numOfZeros, '0');
-        // make number right to == have same number of digits to right one
-        BigDecimalInt rightNum(modifications);
-        return modifiedReal == rightNum;
-    }
-    else if (modifiedReal.size() < anotherReal.size())
-    {
-        int numOfZeros = anotherReal.size() - modifiedReal.size();
-        char sign = (modifiedReal.Sign() == 1) ? '+' : '-';
-        string modifications = sign + modifiedReal.getnum() + string(numOfZeros, '0');
-        // make number left to == have same number of digits to right one
-        BigDecimalInt leftNum(modifications);
-        return leftNum == anotherReal.getModifiedReal();
-    }
-    // if the two object have same number of digits compare them
-    return modifiedReal == anotherReal.getModifiedReal();
+    return (this->modifiedReal == anotherReal.modifiedReal);
 }
 
 // Overload the exertion operator to print BigReal in console
-ostream &operator<<(ostream &out, BigReal &real)
+ostream &operator<<(ostream &out, BigReal real)
 {
-    // if number is negative
-    if (!real.sign())
-        out << '-';
-    out << real.returnPoint();
+    string finalNum = real.modifiedReal.getnum();
+    // Return the point to its original postion
+    finalNum.insert((real.size() - real.pointPosition), 1, '.');
+    // If there is a negative sign print it before the number
+    // If not, print the number directly
+    (!real.sign()) ? out << "-" << finalNum : out << finalNum;
     return out;
 }
 
 // Overload the insertion operator to take input from user and initialize BigReal
-istream &operator>>(istream &in, BigReal &real)
+istream &operator>>(istream &in, BigReal real)
 {
     string realStr;
     in >> realStr;
-    real.removeDecimalPoint(realStr);
+    real.setModifiedReal(realStr);
     return in;
 }
 
@@ -316,30 +216,4 @@ int BigReal::size()
 int BigReal::sign()
 {
     return modifiedReal.Sign();
-}
-
-// Remove decimal point and store its position
-void BigReal::removeDecimalPoint(string &realStr)
-{
-    pointPosition = realStr.find('.');
-    string realWithoutPoint;
-    // Remove the point from the the realStr
-    realWithoutPoint = realStr.erase(pointPosition, 1);
-    // If the entered string has a sign at the beginning, adjust the pointPosition
-    // to overcome the increase in size due to the sign character
-    if (realStr[0] == '+' || realStr[0] == '-')
-    {
-        pointPosition--;
-    }
-    // Assign the value of the modifiedReal with
-    // the removed decimal point string as a BigDecimalInt object
-    modifiedReal = BigDecimalInt(realWithoutPoint);
-}
-
-// Return the decimal point to its original position
-string BigReal::returnPoint()
-{
-    string realNumber = modifiedReal.getnum();
-    realNumber.insert(pointPosition, ".");
-    return realNumber;
 }

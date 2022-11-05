@@ -71,16 +71,20 @@ void StringSet :: addStr(string toAdd){
     }
 }
 
-// To Do: Remove word from vector
-/*
 // Remove certain string from the set
 void StringSet :: removeStr(string toRemove){
-    // Check if the word is in the set or not
-    if(find(mainSet.begin(), mainSet.end(), toRemove) == mainSet.end()){}
-    else
-        { cerr << "The word " << toRemove << " is NOT in the set!\n"; }
+    // Loop over the set to check for the word to remove
+    for(int i = 0; i < mainSet.size(); ++i){
+        // If the word is found, remove it from the set
+        if(mainSet[i] == toRemove){
+            mainSet.erase(mainSet.begin() + i);
+            cout << "The word \"" << toRemove << "\" is removed from the set.\n";
+            return;
+        }
+    }
+    // If the word is not found in the set
+    cerr << "The word \"" << toRemove << "\" is NOT in the set!\n";
 }
-*/
 
 // Clear all elements in the set
 void StringSet :: clearSet(){ mainSet.clear(); }

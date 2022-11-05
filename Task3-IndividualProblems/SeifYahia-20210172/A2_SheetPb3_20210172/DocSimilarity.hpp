@@ -17,7 +17,7 @@ class StringSet{
         // Getter function to get the mainSet vector
         vector <string> & getVector();
         // Constructor to load the words in a given file
-        // StringSet(string fileName = "");
+        StringSet(fstream & file);
         // Constructor to load the string passed & breaks it to tokens
         StringSet(string text = "");
         // Add a certain string to the set

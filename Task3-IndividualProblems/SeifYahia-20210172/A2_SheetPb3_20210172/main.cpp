@@ -2,7 +2,7 @@
 FCAI - OOP - 2022 - Assignment #2
 Author: Seif Yahia - 20210172
 Program Name: Problem 3 - Document Similarity
-Last Modification Date: 4 November 2022
+Last Modification Date: 5 November 2022
 */
 
 #include "DocSimilarity.hpp"
@@ -54,5 +54,11 @@ int main(){
     cout << "set5 is the intersection of set1 and set2!\n";
     cout << "set5 contents: ";
     set5.printSet();
+
+    // Testing the removal of string from a set
+    StringSet set6("You are you test string and if you know you know");
+    cout << "set6 contents: "; set6.printSet();
+    cout << "Removing word from set6....\n"; set6.removeStr("you");
+    cout << "set6 contents NEW!!: "; set6.printSet();
     return 0;
 }

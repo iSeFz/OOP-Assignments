@@ -8,6 +8,22 @@ Last Modification Date: 5 November 2022
 #include "DocSimilarity.hpp"
 
 int main(){
+    // Testing filename constructor
+    string fileName;
+    cout << "Enter filename to load text from : ";
+    cin >> fileName;
+    // Create filestream object to pass to the constructor
+    fstream inputFile(fileName);
+    // Check if the file exists or not
+    if(!inputFile)
+        cerr << "The file \"" << fileName << "\" is NOT found!\n";
+    else{
+        cout << "Loading text from file...\n";
+        StringSet set0(inputFile);
+        cout << "set0 contents: ";
+        set0.printSet();
+    }
+
     // Initializing objects with strings
     StringSet set1("Chocolate ice cream, chocolate milk, and chocolate bars are delicious.");
     StringSet set2("I love chocolate bars very much! They are delicious.");

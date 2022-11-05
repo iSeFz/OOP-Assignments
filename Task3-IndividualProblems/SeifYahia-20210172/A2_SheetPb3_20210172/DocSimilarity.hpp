@@ -23,7 +23,7 @@ class StringSet{
         // Add a certain string to the set
         void addStr(string toAdd);
         // Remove a certain string from the set
-        // void removeStr(string toRemove);
+        void removeStr(string toRemove);
         // Clear the entire set
         void clearSet();
         // Return number of strings in the set

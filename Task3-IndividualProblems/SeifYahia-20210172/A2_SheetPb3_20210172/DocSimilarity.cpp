@@ -25,21 +25,17 @@ string & modifyText(string & text){
     return text;
 }
 
-// To Do: Constructor to take filename
-/*
 // Constructor to load text from file to the mainSet vector
-StringSet :: StringSet(string fileName){
-    // Create input filestream object
-    ifstream file(fileName);
+StringSet :: StringSet(fstream & file){
     // Loop over the file and load each string to the vector
     string word;
     while(file >> word){
-        word = modifyText(word);
-        mainSet.push_back(word);
+        // Check if the word is found before or not to take
+        // only one instance of the word to prevent repeating
+        if(find(mainSet.begin(), mainSet.end(), word) == mainSet.end())
+            { mainSet.push_back(modifyText(word)); }
     }
-    file.close();
 }
-*/
 
 // Constructor to load text from parameter to the mainSet vector
 StringSet :: StringSet(string text){

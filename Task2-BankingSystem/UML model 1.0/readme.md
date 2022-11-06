@@ -9,4 +9,4 @@
 
 ## Preview:
 
-![Untitled](UML%20for%20Banking%20System%20-%20Task%205%20215c4371315d41bf84db32b0d7a57c0d/Untitled.png)
+![uml_v1](D:\FCAI\2.1 New\OOP\Assignment-2-OOP\Task2-BankingSystem\UML model 1.0\uml_v1.png)

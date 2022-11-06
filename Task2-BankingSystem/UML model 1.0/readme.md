@@ -9,4 +9,4 @@
 
 ## Preview:
 
-![uml_v1](D:\FCAI\2.1 New\OOP\Assignment-2-OOP\Task2-BankingSystem\UML model 1.0\uml_v1.png)
+![UML_V1](https://github.com/OmarAmino/Assignment-2-OOP/blob/main/Task2-BankingSystem/UML%20model%201.0/uml_v1.png)

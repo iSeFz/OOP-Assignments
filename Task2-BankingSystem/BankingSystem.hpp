@@ -1,63 +1,65 @@
-
-
 #ifndef BANKINGSYSTEM_HPP
 #define BANKINGSYSTEM_HPP
-#include<iostream>
+
+#include <iostream>
+#include <iomanip>
+#include <vector>
 using namespace std;
 
-class BankAccount {
-
+class BankAccount
+{
 private:
-    string accountID;
-    double balance;
-    static int order;
+	string accountID;
+	double balance;
+	static int order;
 
 public:
-    BankAccount();
+	BankAccount();
 
-    BankAccount(double balance);
+	BankAccount(double balance);
 
-    virtual int withdraw(double amount);
+	virtual int withdraw(double amount);
 
-    virtual int deposit(double amount);
+	virtual int deposit(double amount);
 
-    double getBalance();
+	double getBalance();
 
-    void setBalance(double balance);
+	void setBalance(double balance);
 
-    string getAccountID();
+	string getAccountID();
 
-    string generateID();
+	string generateID();
 };
 
-
-class SavingsBankAccount : public BankAccount {
+class SavingsBankAccount : public BankAccount
+{
 private:
-    double minimumBalance = 1000;
+	double minimumBalance = 1000;
 
 public:
-    SavingsBankAccount();
+	SavingsBankAccount();
 
-    SavingsBankAccount(double balance);
+	SavingsBankAccount(double balance);
 
-    int withdraw(double amount);
+	int withdraw(double amount);
 
-    int deposit(double amount);
+	int deposit(double amount);
 };
 
-
-class Client {
+class Client
+{
 
 private:
 	string name;
 	string address;
 	string phoneNum;
 	BankAccount Account;
-	bool createAccount();
 
 public:
-	Client(string name,string address,string phoneNum);
-	
+	bool createAccount();
+
+	Client(string name, string address, string phoneNum);
+
 	string getName();
 
 	string getAddress();
@@ -67,19 +69,26 @@ public:
 	BankAccount getBankAccount();
 };
 
-class BankApplication {
-
-protected:
-    Client clients;
-protected:
-    BankAccount accounts;
+// Main class that runs the application
+class BankApplication
+{
+private:
+	// Vector of Clients to store the data into
+	vector<Client> clients;
 
 public:
-    BankApplication();
-
-    void addClient();
-
-    void printClients();
+	// Default constructor
+	BankApplication();
+	// Start the application
+	void start();
+	// Add new client to the system
+	bool addClient();
+	// List all current clients and accounts
+	void printClients();
+	// Withdraw money from certain account
+	void withdrawMoney();
+	// Deposit money into ceratin account
+	void depositMoney();
 };
 
 #endif

@@ -5,24 +5,45 @@
 #include<iostream>
 using namespace std;
 
-class BankApplication {
+class BankAccount {
 
-protected:
-	Client clients;
-protected:
-	BankAccount accounts;
+private:
+    string accountID;
+    double balance;
+    static int order;
 
 public:
-	BankApplication();
+    BankAccount();
 
-	void addClient();
+    BankAccount(double balance);
 
-	void printClients();
+    virtual int withdraw(double amount);
+
+    virtual int deposit(double amount);
+
+    double getBalance();
+
+    void setBalance(double balance);
+
+    string getAccountID();
+
+    string generateID();
 };
 
 
+class SavingsBankAccount : public BankAccount {
+private:
+    double minimumBalance = 1000;
 
+public:
+    SavingsBankAccount();
 
+    SavingsBankAccount(double balance);
+
+    int withdraw(double amount);
+
+    int deposit(double amount);
+};
 
 
 class Client {
@@ -31,7 +52,7 @@ private:
 	string name;
 	string address;
 	string phoneNum;
-	BankAccount BankAccount;
+	BankAccount Account;
 	bool createAccount();
 
 public:
@@ -46,38 +67,19 @@ public:
 	BankAccount getBankAccount();
 };
 
+class BankApplication {
 
-
-class BankAccount {
-
-private:
-	string accountID;
-	double balance;
-
-public:
-	int withdraw(double amount);
-
-	int deposit(double amount);
-
-	double getBalance();
-
-	void setBalance(double balance);
-
-	string getAccountID();
-
-	void generateID(string accountID);
-};
-
-
-
-class SavingsBankAccount : BankAccount {
+protected:
+    Client clients;
+protected:
+    BankAccount accounts;
 
 public:
-	double minimumBalance;
+    BankApplication();
 
-	int withdraw(double amount);
+    void addClient();
 
-	int deposit(double amount);
+    void printClients();
 };
 
 #endif

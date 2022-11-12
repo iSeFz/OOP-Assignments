@@ -1,7 +1,5 @@
 #include "BankingSystem.hpp"
 
-
-
 BankApplication::BankApplication() {
 	// TODO - implement BankApplication::BankApplication
 	throw "Not yet implemented";
@@ -16,36 +14,6 @@ void BankApplication::printClients() {
 	// TODO - implement BankApplication::printClients
 	throw "Not yet implemented";
 }
-
-
-
-class Client {
-
-private:
-	string name;
-	string address;
-	string phoneNum;
-	BankAccount BankAccount;
-
-public:
-	Client();
-private:
-
-	bool createAccount();
-
-public:
-	string getName();
-
-	string getAddress();
-
-	string getPhoneNum();
-
-	BankAccount getBankAccount();
-};
-
-
-
-
 
 Client::Client() {
 	// TODO - implement Client::Client
@@ -73,39 +41,35 @@ BankAccount Client::getBankAccount() {
 	// TODO - implement Client::getBankAccount
 	throw "Not yet implemented";
 }
+int BankAccount::order = 1;
 
+BankAccount::BankAccount(){
+    balance = 0;
+}
 
-
-class BankAccount {
-
-private:
-	string accountID;
-	double balance;
-
-public:
-	int withdraw(double amount);
-
-	int deposit(double amount);
-
-	double getBalance();
-
-	void setBalance(double balance);
-
-	string getAccountID();
-
-	void generateID(string accountID);
-};
-
+BankAccount::BankAccount(double balance) {
+    this->accountID = generateID();
+    this->balance = balance;
+}
 
 
 int BankAccount::withdraw(double amount) {
-	// TODO - implement BankAccount::withdraw
-	throw "Not yet implemented";
+    if(amount <= getBalance() && amount > 0 ) {
+        balance -= amount;
+        return 1;
+    }
+    else
+        return 0;
 }
 
 int BankAccount::deposit(double amount) {
-	// TODO - implement BankAccount::deposit
-	throw "Not yet implemented";
+    if(amount > 0){
+        balance += amount;
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 double BankAccount::getBalance() {
@@ -113,31 +77,39 @@ double BankAccount::getBalance() {
 }
 
 void BankAccount::setBalance(double balance) {
-	this->balance = balance;
+    if(balance > 0){
+        this->balance = balance;
+    }
 }
 
 string BankAccount::getAccountID() {
 	return this->accountID;
 }
 
-void BankAccount::generateID(string accountID) {
-	// TODO - implement BankAccount::generateID
-	throw "Not yet implemented";
+string BankAccount::generateID() {
+    return "FCAI " + to_string(order++);
 }
 
+SavingsBankAccount::SavingsBankAccount() : BankAccount(){}
 
-
-
-
-
-
+SavingsBankAccount::SavingsBankAccount(double balance) : BankAccount(balance){}
 
 int SavingsBankAccount::withdraw(double amount) {
-	// TODO - implement SavingsBankAccount::withdraw
-	throw "Not yet implemented";
+    if(amount <= getBalance() - minimumBalance){
+        setBalance(getBalance() - amount);
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 int SavingsBankAccount::deposit(double amount) {
-	// TODO - implement SavingsBankAccount::deposit
-	throw "Not yet implemented";
+    if(amount >= 100){
+        setBalance(getBalance() + amount);
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }

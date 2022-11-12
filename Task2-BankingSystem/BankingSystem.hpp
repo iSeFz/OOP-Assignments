@@ -56,7 +56,7 @@ private:
 	bool createAccount();
 
 public:
-	Client();
+	Client(string name,string address,string phoneNum);
 	
 	string getName();
 

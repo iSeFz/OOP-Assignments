@@ -15,14 +15,34 @@ void BankApplication::printClients() {
 	throw "Not yet implemented";
 }
 
-Client::Client() {
-	// TODO - implement Client::Client
-	throw "Not yet implemented";
+Client::Client(string name,string address,string phoneNum) {
+	this->name = name;
+    this->address = address;
+    this->phoneNum = phoneNum;
+    if(!createAccount()){
+        // TODO - Destruct client and abort creation
+    }
 }
 
 bool Client::createAccount() {
-	// TODO - implement Client::createAccount
-	throw "Not yet implemented";
+	cout << "Do you want the account to be a savings account? (y/n)" << endl;
+    char choice;
+    double amount;
+    cin >> choice;
+    cout << "Enter the initial amount to be deposited: " << endl;
+    cin >> amount;
+    if (choice == 'y') {
+        BankAccount account = SavingsBankAccount(amount);
+        this->Account = account;
+        return true;
+    } else if (choice == 'n') {
+        BankAccount account = BankAccount(amount);
+        this->Account = account;
+        return true;
+    } else {
+        cout << "Invalid choice" << endl;
+        return false;
+    }
 }
 
 string Client::getName() {
@@ -38,8 +58,7 @@ string Client::getPhoneNum() {
 }
 
 BankAccount Client::getBankAccount() {
-	// TODO - implement Client::getBankAccount
-	throw "Not yet implemented";
+	return this->Account;
 }
 int BankAccount::order = 1;
 

@@ -53,7 +53,8 @@ private:
 	string name;
 	string address;
 	string phoneNum;
-	BankAccount Account;
+	BankAccount * account;
+
 
 public:
 	bool createAccount();
@@ -66,7 +67,7 @@ public:
 
 	string getPhoneNum();
 
-	BankAccount getBankAccount();
+	BankAccount* getBankAccount();
 };
 
 // Main class that runs the application

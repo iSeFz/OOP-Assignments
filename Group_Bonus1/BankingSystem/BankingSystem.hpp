@@ -24,7 +24,7 @@ public:
 
 	double getBalance();
 
-	void setBalance(double balance);
+	void setBalance(double currentBalance);
 
 	string getAccountID();
 
@@ -39,7 +39,7 @@ private:
 public:
 	SavingsBankAccount();
 
-	SavingsBankAccount(double balance);
+	SavingsBankAccount(double initialBalance);
 
 	int withdraw(double amount);
 

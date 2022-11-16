@@ -56,7 +56,7 @@ void BigReal ::setModifiedReal(string realStr)
             break;
         }
     }
-    
+
     // Check if there is a decimal point in the string or not
     if (realStr.find('.') < realStr.length())
     {
@@ -248,21 +248,20 @@ BigReal BigReal ::operator-(BigReal &other)
 // Overload the smaller than operator
 bool BigReal::operator<(BigReal anotherReal)
 {
+    int numOfZeros = (this->pointPosition) - (anotherReal.pointPosition);
     // make two objects have same number of digits
-    if (modifiedReal.size() > anotherReal.size())
+    if (numOfZeros > 0)
     {
-        int numOfZeros = modifiedReal.size() - anotherReal.size();
-        char sign = (anotherReal.getModifiedReal().Sign() == 1) ? '+' : '-';
+        char sign = (anotherReal.sign()) ? '+' : '-';
         string modifications = sign + anotherReal.getModifiedReal().getnum() + string(numOfZeros, '0');
         // make number right to < have same number of digits to right one
         BigDecimalInt rightNum(modifications);
         return modifiedReal < rightNum;
     }
-    else if (modifiedReal.size() < anotherReal.size())
+    else
     {
-        int numOfZeros = anotherReal.size() - modifiedReal.size();
-        char sign = (modifiedReal.Sign() == 1) ? '+' : '-';
-        string modifications = sign + modifiedReal.getnum() + string(numOfZeros, '0');
+        char sign = (modifiedReal.Sign()) ? '+' : '-';
+        string modifications = sign + modifiedReal.getnum() + string(-numOfZeros, '0');
         // make number left to < have same number of digits to right one
         BigDecimalInt leftNum(modifications);
         return leftNum < anotherReal.getModifiedReal();
@@ -274,21 +273,20 @@ bool BigReal::operator<(BigReal anotherReal)
 // Overload the greater than operator
 bool BigReal::operator>(BigReal anotherReal)
 {
+    int numOfZeros = (this->pointPosition) - (anotherReal.pointPosition);
     // make two objects have same number of digits
-    if (modifiedReal.size() > anotherReal.size())
+    if (numOfZeros > 0)
     {
-        int numOfZeros = modifiedReal.size() - anotherReal.size();
-        char sign = (anotherReal.getModifiedReal().Sign() == 1) ? '+' : '-';
+        char sign = (anotherReal.sign()) ? '+' : '-';
         string modifications = sign + anotherReal.getModifiedReal().getnum() + string(numOfZeros, '0');
         // make number right to > have same number of digits to right one
         BigDecimalInt rightNum(modifications);
         return modifiedReal > rightNum;
     }
-    else if (modifiedReal.size() < anotherReal.size())
+    else
     {
-        int numOfZeros = anotherReal.size() - modifiedReal.size();
-        char sign = (modifiedReal.Sign() == 1) ? '+' : '-';
-        string modifications = sign + modifiedReal.getnum() + string(numOfZeros, '0');
+        char sign = (modifiedReal.Sign()) ? '+' : '-';
+        string modifications = sign + modifiedReal.getnum() + string(-numOfZeros, '0');
         // make number left to > have same number of digits to right one
         BigDecimalInt leftNum(modifications);
         return leftNum > anotherReal.getModifiedReal();

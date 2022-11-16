@@ -5,8 +5,8 @@ Team Members:
     Omar Elgammal - 20210271
     Mohamed Amgad - 20210330
 Program Name: Big Real Program
-Last Modification Date: 6 November 2022
-Version: 5.0
+Last Modification Date: 16 November 2022
+Version: 5.2
 */
 
 #include "BigRealClass.hpp"
@@ -20,7 +20,6 @@ int main(){
     n3 = n1 - n2; // −2333333333327.213432222
     cout << n1 <<  " - " << n2 << " = " << n3 << endl;
 
-    // To Do : Copy and Move constructors
     /*
     // n3 = (n3 + BigReal (0.9));
     // cout << "n3 + 0.9 = " << endl;
@@ -39,5 +38,12 @@ int main(){
     d = a - b; // -12391.1266
     cout << a << " + " << b << " = " << c << endl;
     cout << a << " - " << b << " = " << d << endl;
+
+    BigReal tst1(-12.67);
+    BigReal tst2("10.35");
+    cout << "tst1 = " << tst1 << endl;
+    cout << "tst2 = " << tst2 << endl;
+    cout << "tst1 < tst2 is ";
+    (tst1 < tst2) ? cout << "true\n" : cout << "false\n";
     return 0;
 }

@@ -20,6 +20,8 @@ private:
     T* data;
 // Public methods
 public:
+    // iterator
+    typedef T* iterator;
     // Constructors
     MSVector();
     MSVector(int);
@@ -34,10 +36,20 @@ public:
     ~MSVector();
     // Access and return the element at the specified index
     T& operator[](int);
+     // Return address of first element in MSVector
+    iterator  begin();
+    // Return address of location after last element in MSVector
+    iterator  end();
     // Add element to the end of the vector
     void push_back(T);
     // Remove and return last element in vector
     T pop_back();
+    // Insert item at iterator position
+    void insert(iterator, T);
+    // Remove item at iterator position
+    void erase(iterator);
+    // Remove items between two iterators
+    void erase(iterator,iterator);
     // Return current size of vector
     int Size() const;
     // Return current capacity of vector
@@ -130,6 +142,17 @@ MSVector<T>& MSVector<T> :: operator= (MSVector<T>&& other) {
 template <class T>
 MSVector<T> :: ~MSVector() { delete[] data; }
 
+// Return address of first element in vector
+template <class T>
+typename MSVector<T>::iterator  MSVector<T>::begin(){
+    return data;
+}
+
+// Return address of location after last element in MSVector
+template <class T>
+typename MSVector<T>::iterator  MSVector<T>::end() {
+    return &data[size];
+}
 // Access and return the item at the specified index
 template <class T>
 T& MSVector<T> :: operator[] (int indx) {
@@ -171,6 +194,83 @@ T MSVector<T> :: pop_back() {
     data = newData;
     newData = nullptr;
     return lastEl;
+}
+// Insert item at iterator position
+template <class T>
+void MSVector<T>::insert(iterator pos, T value){
+    if(pos > MSVector<T>::end() || pos < MSVector<T>::begin())
+        throw out_of_range("Position is out of range");
+    if(pos == MSVector<T>::end()){
+        this->push_back(value);
+    }
+    else {
+        if(size + 1 > capacity)
+            capacity *= 2;
+        int idx = 0;
+        T *newData = new T[capacity];
+        for (auto it = MSVector<T>::begin(); it != MSVector<T>::end();) {
+            if (it != pos)
+                newData[idx++] = *(it++);
+            else {
+                newData[idx++] = value;
+                newData[idx++] = *(it++);
+            }
+        }
+        delete[] data;
+        size++;
+        data = newData;
+        newData = nullptr;
+    }
+}
+
+// Remove item at iterator position
+template <class T>
+void MSVector<T>::erase(iterator pos){
+    if(pos < MSVector<T>::begin() || pos >= MSVector<T>::end())
+        throw out_of_range("Position is out of range");
+    int idx = 0;
+    T* newData = new T[capacity];
+    for (auto it = MSVector<T>::begin(); it != MSVector<T>::end(); ++it) {
+        if(it != pos)
+            newData[idx++] = *it;
+    }
+    delete [] data;
+    size--;
+    data = newData;
+    newData = nullptr;
+}
+
+// Remove items between two iterators
+template <class T>
+void MSVector<T>::erase(iterator start, iterator end) {
+    if((start < MSVector<T>::begin() || start > MSVector<T>::end())
+       && (end < MSVector<T>::begin() || end > MSVector<T>::end()))
+    {throw out_of_range("Position is out of range"); }
+    try {
+        if (start > end)
+            throw "Positioin of start is greater than Position of end";
+    }
+    catch (const char* e){
+        cerr << "Program Terminated due to: " << e;
+        exit(-1);
+    }
+    int idx = 0;
+    int LB = start - MSVector<T>::begin();
+    int UB = end - MSVector<T>::begin() - 1;
+    int newSize = size - (UB - LB + 1);
+    if(newSize <= 0){
+        MSVector<T>::Clear();
+        return;
+    }
+    T* newData = new T[capacity];
+    for (auto it = MSVector<T>::begin(); it != MSVector<T>::end(); ++it) {
+        if(it < start || it > end - 1)
+            newData[idx++] = *it;
+    }
+    delete [] data;
+    size = newSize;
+    data = newData;
+    newData = nullptr;
 }
 
 // Return current size of vector

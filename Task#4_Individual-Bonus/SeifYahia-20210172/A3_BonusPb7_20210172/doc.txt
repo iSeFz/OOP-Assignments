@@ -1,0 +1,2 @@
+this is  some   normal text    to test the program
+this is r#epeat is more th^an this one is ti|me is

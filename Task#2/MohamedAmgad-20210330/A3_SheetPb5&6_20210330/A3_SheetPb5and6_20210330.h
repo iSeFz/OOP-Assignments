@@ -25,7 +25,9 @@ public:
     // Default constructor
     AM_Game();
     // Parameterized constructor
-    AM_Game(int size);
+    AM_Game(int);
+    //Destructor
+    ~AM_Game();
     // Function to display board
     void displayBoard();
     // Function to take move of players
@@ -41,6 +43,6 @@ public:
     // Function to present menu of game
     void Menu();
     // Function of minimax algorithm to choose best move
-    int minimax(vector<vector<char>>&,int,bool);
+    int minimax(vector<vector<char>>&,int,int,int,bool);
 };
 #endif //A3_SHEETPB5_6_20210330_A3_SHEETPB5AND6_20210330_H

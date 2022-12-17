@@ -28,6 +28,12 @@ AM_Game::AM_Game(int size) {
     }
 }
 
+//Destructor
+AM_Game::~AM_Game() {
+    delete [] p1Rockets;
+    delete [] p2Rockets;
+}
+
 //Display board
 void AM_Game::displayBoard() {
     cout << string(5*Size,'-')<<"\n";
@@ -240,7 +246,7 @@ void AM_Game::run(bool AI) {
             int bestChoice;
             for (int i = 1; i <= Size - 2; ++i) {
                 if (move('>',i)){
-                    int bestScore = minimax(board,20, true);
+                    int bestScore = minimax(board,23,-10000,10000, true);
                     undo('>',i);
                     // if bestScore < score take this move in consideration
                     if (bestScore < score){
@@ -264,7 +270,7 @@ void AM_Game::run(bool AI) {
 }
 
 // minimax function
-int AM_Game::minimax(vector<vector<char>> &Board,int depth, bool isMaximizing) {
+int AM_Game::minimax(vector<vector<char>> &Board,int depth,int alpha,int beta, bool isMaximizing) {
     int result = checkWin();
     // check if there is win
     if (result == 10 || result == -10)
@@ -279,9 +285,13 @@ int AM_Game::minimax(vector<vector<char>> &Board,int depth, bool isMaximizing) {
         // test every move
         for (int i = 1; i <= Size - 2; ++i) {
             if (move('v',i)){
-                int score = minimax(board,depth - 1, false);
+                int score = minimax(board,depth - 1,alpha,beta, false);
                 undo('v',i);
                 bestScore = max(bestScore, score);
+                alpha = max(alpha,bestScore);
+                // Min guarantee value minimum than we can get from going on
+                if (beta <= alpha)
+                    break;
             }
         }
         return bestScore;
@@ -291,9 +301,12 @@ int AM_Game::minimax(vector<vector<char>> &Board,int depth, bool isMaximizing) {
         int bestScore = 1000;
         for (int i = 1; i <= Size - 2; ++i) {
             if (move('>',i)){
-                int score = minimax(board,depth - 1, true);
+                int score = minimax(board,depth - 1,alpha,beta, true);
                 undo('>',i);
                 bestScore = min(bestScore, score);
+                beta = min(beta,bestScore);
+                if(beta <= alpha)
+                    break;
             }
         }
         return bestScore;

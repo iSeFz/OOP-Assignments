@@ -1,0 +1,646 @@
+\hypertarget{classMSVector}{}\doxysection{MSVector\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classMSVector}\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+
+
+\mbox{\hyperlink{classMSVector}{MSVector}} Class.  
+
+
+
+
+{\ttfamily \#include $<$ms\+Vector.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMSVector_af416d96d84dccedbac729fea19a530a3}\label{classMSVector_af416d96d84dccedbac729fea19a530a3}} 
+typedef T $\ast$ {\bfseries iterator}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classMSVector_a947e69603a66657eaf2ec54cc1596c8d}{MSVector}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classMSVector}{MSVector}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMSVector_a5c106c315e4a03521afb234c6eec1cfe}{MSVector}} (int)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classMSVector}{MSVector}} object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMSVector_a05441c897506d3026eb972b9f25101c4}{MSVector}} (T $\ast$, int)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classMSVector}{MSVector}} object from Pre-\/defined container. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMSVector_aa03cc4b2aa23ad568eeef343bdb3bcfb}{MSVector}} (const \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classMSVector}{MSVector}} object from another object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \& \mbox{\hyperlink{classMSVector_a1e81f35908f8a3eb9ba984c38cf32b17}{operator=}} (const \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&)
+\begin{DoxyCompactList}\small\item\em Redefine \mbox{\hyperlink{classMSVector}{MSVector}} object form another object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \& \mbox{\hyperlink{classMSVector_a50b61d6e27e3f7104e42bf57db7474e2}{operator=}} (\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&\&)
+\begin{DoxyCompactList}\small\item\em Move \mbox{\hyperlink{classMSVector}{MSVector}} object to another object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMSVector_a1c33368fa1be676ab7d7a72295978d43}{$\sim$\+MSVector}} ()
+\begin{DoxyCompactList}\small\item\em Destroy the \mbox{\hyperlink{classMSVector}{MSVector}} object. \end{DoxyCompactList}\item 
+T \& \mbox{\hyperlink{classMSVector_a5a635fab299ccbb07d1c939173f18d03}{operator\mbox{[}$\,$\mbox{]}}} (int)
+\begin{DoxyCompactList}\small\item\em Get value at given index. \end{DoxyCompactList}\item 
+iterator \mbox{\hyperlink{classMSVector_a0e266cfaa5551be6cbe757e8727e1a33}{begin}} ()
+\begin{DoxyCompactList}\small\item\em Get address of first element in \mbox{\hyperlink{classMSVector}{MSVector}}. \end{DoxyCompactList}\item 
+iterator \mbox{\hyperlink{classMSVector_a1c9d1d04961498ec023795fcc8945ed1}{end}} ()
+\begin{DoxyCompactList}\small\item\em Get address of position after last element. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMSVector_a97009ed950bc708d36f1af5ab4219dbd}{push\+\_\+back}} (T)
+\begin{DoxyCompactList}\small\item\em Push Element at end of \mbox{\hyperlink{classMSVector}{MSVector}}. \end{DoxyCompactList}\item 
+T \mbox{\hyperlink{classMSVector_a40c0f245496b44b1d13fc21410259e2f}{pop\+\_\+back}} ()
+\begin{DoxyCompactList}\small\item\em Remove last element form \mbox{\hyperlink{classMSVector}{MSVector}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMSVector_a926c458ed05980502ed436a182a2160c}{insert}} (iterator, T)
+\begin{DoxyCompactList}\small\item\em Insert value at given Position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMSVector_af8be3ab175faa68ff15d677b57e51748}{erase}} (iterator)
+\begin{DoxyCompactList}\small\item\em Erase element at given Position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMSVector_a3adaa413af8e826d93f2754ee4b90779}{erase}} (iterator, iterator)
+\begin{DoxyCompactList}\small\item\em Erase element from start till before end. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMSVector_a2c14fd28a517fa0488163e592562f485}{Size}} () const
+\begin{DoxyCompactList}\small\item\em Get size of \mbox{\hyperlink{classMSVector}{MSVector}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMSVector_a1f91d959eb09d62d9337f3a6f2a482ab}{Capacity}} () const
+\begin{DoxyCompactList}\small\item\em Get capacity of \mbox{\hyperlink{classMSVector}{MSVector}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMSVector_a9144c665df5be994ffdd059dfb9e6019}{Resize}} ()
+\begin{DoxyCompactList}\small\item\em Resize \mbox{\hyperlink{classMSVector}{MSVector}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMSVector_a4f4dbbc36b40425567a117b38c50cc8b}{Empty}} ()
+\begin{DoxyCompactList}\small\item\em Check if \mbox{\hyperlink{classMSVector}{MSVector}} is empty or not. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMSVector_ae3390691c16e794646e169ac2c52547d}{Clear}} ()
+\begin{DoxyCompactList}\small\item\em Clear \mbox{\hyperlink{classMSVector}{MSVector}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMSVector_a1e804574ae558b710052b3bae69483cc}{operator==}} (const \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&)
+\begin{DoxyCompactList}\small\item\em Compare two \mbox{\hyperlink{classMSVector}{MSVector}} element by element. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMSVector_a19ed043255b355665f21ccd8aaa23f2f}{operator$<$}} (const \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&)
+\begin{DoxyCompactList}\small\item\em Compare two \mbox{\hyperlink{classMSVector}{MSVector}} element by element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMSVector_a57f4586555c0c21b2e940290b29f3bc4}\label{classMSVector_a57f4586555c0c21b2e940290b29f3bc4}} 
+ostream \& {\bfseries operator} (ostream \&, \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class MSVector$<$ T $>$}
+\mbox{\hyperlink{classMSVector}{MSVector}} Class. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMSVector_a947e69603a66657eaf2ec54cc1596c8d}\label{classMSVector_a947e69603a66657eaf2ec54cc1596c8d}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!MSVector@{MSVector}}
+\index{MSVector@{MSVector}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MSVector()}{MSVector()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\mbox{\hyperlink{classMSVector}{\+::\+MSVector}}}
+
+
+
+Construct a new \mbox{\hyperlink{classMSVector}{MSVector}} object. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a5c106c315e4a03521afb234c6eec1cfe}\label{classMSVector_a5c106c315e4a03521afb234c6eec1cfe}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!MSVector@{MSVector}}
+\index{MSVector@{MSVector}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MSVector()}{MSVector()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\mbox{\hyperlink{classMSVector}{\+::\+MSVector}} (\begin{DoxyParamCaption}\item[{int}]{cap }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classMSVector}{MSVector}} object. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em cap} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a05441c897506d3026eb972b9f25101c4}\label{classMSVector_a05441c897506d3026eb972b9f25101c4}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!MSVector@{MSVector}}
+\index{MSVector@{MSVector}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MSVector()}{MSVector()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\mbox{\hyperlink{classMSVector}{\+::\+MSVector}} (\begin{DoxyParamCaption}\item[{T $\ast$}]{other,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classMSVector}{MSVector}} object from Pre-\/defined container. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+{\em n} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_aa03cc4b2aa23ad568eeef343bdb3bcfb}\label{classMSVector_aa03cc4b2aa23ad568eeef343bdb3bcfb}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!MSVector@{MSVector}}
+\index{MSVector@{MSVector}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{MSVector()}{MSVector()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\mbox{\hyperlink{classMSVector}{\+::\+MSVector}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classMSVector}{MSVector}} object from another object. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a1c33368fa1be676ab7d7a72295978d43}\label{classMSVector_a1c33368fa1be676ab7d7a72295978d43}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!````~MSVector@{$\sim$MSVector}}
+\index{````~MSVector@{$\sim$MSVector}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$MSVector()}{~MSVector()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{classMSVector}{MSVector}}}
+
+
+
+Destroy the \mbox{\hyperlink{classMSVector}{MSVector}} object. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$ 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classMSVector_a0e266cfaa5551be6cbe757e8727e1a33}\label{classMSVector_a0e266cfaa5551be6cbe757e8727e1a33}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!begin@{begin}}
+\index{begin@{begin}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{begin()}{begin()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::iterator \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::begin}
+
+
+
+Get address of first element in \mbox{\hyperlink{classMSVector}{MSVector}}. 
+
+\begin{DoxyReturn}{Returns}
+iterator
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a1f91d959eb09d62d9337f3a6f2a482ab}\label{classMSVector_a1f91d959eb09d62d9337f3a6f2a482ab}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!Capacity@{Capacity}}
+\index{Capacity@{Capacity}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Capacity()}{Capacity()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::\+Capacity}
+
+
+
+Get capacity of \mbox{\hyperlink{classMSVector}{MSVector}}. 
+
+\begin{DoxyReturn}{Returns}
+int
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_ae3390691c16e794646e169ac2c52547d}\label{classMSVector_ae3390691c16e794646e169ac2c52547d}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!Clear@{Clear}}
+\index{Clear@{Clear}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Clear()}{Clear()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::\+Clear}
+
+
+
+Clear \mbox{\hyperlink{classMSVector}{MSVector}}. 
+
+Clear all elements in \mbox{\hyperlink{classMSVector}{MSVector}}.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\mbox{\Hypertarget{classMSVector_a4f4dbbc36b40425567a117b38c50cc8b}\label{classMSVector_a4f4dbbc36b40425567a117b38c50cc8b}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!Empty@{Empty}}
+\index{Empty@{Empty}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Empty()}{Empty()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::\+Empty}
+
+
+
+Check if \mbox{\hyperlink{classMSVector}{MSVector}} is empty or not. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a1c9d1d04961498ec023795fcc8945ed1}\label{classMSVector_a1c9d1d04961498ec023795fcc8945ed1}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!end@{end}}
+\index{end@{end}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{end()}{end()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::iterator \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::end}
+
+
+
+Get address of position after last element. 
+
+\begin{DoxyReturn}{Returns}
+iterator
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$ 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_af8be3ab175faa68ff15d677b57e51748}\label{classMSVector_af8be3ab175faa68ff15d677b57e51748}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!erase@{erase}}
+\index{erase@{erase}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::erase (\begin{DoxyParamCaption}\item[{iterator}]{pos }\end{DoxyParamCaption})}
+
+
+
+Erase element at given Position. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMSVector_a3adaa413af8e826d93f2754ee4b90779}\label{classMSVector_a3adaa413af8e826d93f2754ee4b90779}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!erase@{erase}}
+\index{erase@{erase}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::erase (\begin{DoxyParamCaption}\item[{iterator}]{start,  }\item[{iterator}]{end }\end{DoxyParamCaption})}
+
+
+
+Erase element from start till before end. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em start} & \\
+\hline
+{\em end} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMSVector_a926c458ed05980502ed436a182a2160c}\label{classMSVector_a926c458ed05980502ed436a182a2160c}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{iterator}]{pos,  }\item[{T}]{value }\end{DoxyParamCaption})}
+
+
+
+Insert value at given Position. 
+
+insert value at given Position
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & \\
+\hline
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMSVector_a19ed043255b355665f21ccd8aaa23f2f}\label{classMSVector_a19ed043255b355665f21ccd8aaa23f2f}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::operator$<$ (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Compare two \mbox{\hyperlink{classMSVector}{MSVector}} element by element. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a1e81f35908f8a3eb9ba984c38cf32b17}\label{classMSVector_a1e81f35908f8a3eb9ba984c38cf32b17}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \& \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Redefine \mbox{\hyperlink{classMSVector}{MSVector}} object form another object. 
+
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$\&
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a50b61d6e27e3f7104e42bf57db7474e2}\label{classMSVector_a50b61d6e27e3f7104e42bf57db7474e2}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \& \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&\&}]{other }\end{DoxyParamCaption})}
+
+
+
+Move \mbox{\hyperlink{classMSVector}{MSVector}} object to another object. 
+
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$\&
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+MSVector$<$\+T$>$\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a1e804574ae558b710052b3bae69483cc}\label{classMSVector_a1e804574ae558b710052b3bae69483cc}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$ \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Compare two \mbox{\hyperlink{classMSVector}{MSVector}} element by element. 
+
+\begin{DoxyReturn}{Returns}
+true 
+
+false
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true 
+
+false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a5a635fab299ccbb07d1c939173f18d03}\label{classMSVector_a5a635fab299ccbb07d1c939173f18d03}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \& \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{indx }\end{DoxyParamCaption})}
+
+
+
+Get value at given index. 
+
+\begin{DoxyReturn}{Returns}
+T\&
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em indx} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\& 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a40c0f245496b44b1d13fc21410259e2f}\label{classMSVector_a40c0f245496b44b1d13fc21410259e2f}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!pop\_back@{pop\_back}}
+\index{pop\_back@{pop\_back}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{pop\_back()}{pop\_back()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::pop\+\_\+back}
+
+
+
+Remove last element form \mbox{\hyperlink{classMSVector}{MSVector}}. 
+
+\begin{DoxyReturn}{Returns}
+T
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+T 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a97009ed950bc708d36f1af5ab4219dbd}\label{classMSVector_a97009ed950bc708d36f1af5ab4219dbd}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!push\_back@{push\_back}}
+\index{push\_back@{push\_back}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{push\_back()}{push\_back()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::push\+\_\+back (\begin{DoxyParamCaption}\item[{T}]{item }\end{DoxyParamCaption})}
+
+
+
+Push Element at end of \mbox{\hyperlink{classMSVector}{MSVector}}. 
+
+\begin{DoxyReturn}{Returns}
+int
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em item} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a9144c665df5be994ffdd059dfb9e6019}\label{classMSVector_a9144c665df5be994ffdd059dfb9e6019}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!Resize@{Resize}}
+\index{Resize@{Resize}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Resize()}{Resize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::\+Resize}
+
+
+
+Resize \mbox{\hyperlink{classMSVector}{MSVector}}. 
+
+\begin{DoxyReturn}{Returns}
+int
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMSVector_a2c14fd28a517fa0488163e592562f485}\label{classMSVector_a2c14fd28a517fa0488163e592562f485}} 
+\index{MSVector$<$ T $>$@{MSVector$<$ T $>$}!Size@{Size}}
+\index{Size@{Size}!MSVector$<$ T $>$@{MSVector$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Size()}{Size()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classMSVector}{MSVector}}$<$ T $>$\+::\+Size}
+
+
+
+Get size of \mbox{\hyperlink{classMSVector}{MSVector}}. 
+
+\begin{DoxyReturn}{Returns}
+int
+\end{DoxyReturn}
+
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{msVector_8hpp}{ms\+Vector.\+hpp}}\end{DoxyCompactItemize}

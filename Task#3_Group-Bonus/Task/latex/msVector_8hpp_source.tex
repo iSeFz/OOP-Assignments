@@ -1,0 +1,338 @@
+\hypertarget{msVector_8hpp_source}{}\doxysection{ms\+Vector.\+hpp}
+\mbox{\hyperlink{msVector_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_MSVECTOR\_HPP}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_MSVECTOR\_HPP}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{11 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{template} <\textcolor{keyword}{class} T> \textcolor{keyword}{class }\mbox{\hyperlink{classMSVector}{MSVector}};}
+\DoxyCodeLine{14 \textcolor{keyword}{template} <\textcolor{keyword}{class} T> ostream\& \mbox{\hyperlink{msVector_8hpp_a9c642eec61ddb2c7940180820fcfc1ff}{operator<<}}(ostream\&, \mbox{\hyperlink{classMSVector}{MSVector<T>}});}
+\DoxyCodeLine{21 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classMSVector}{MSVector}}\{}
+\DoxyCodeLine{23 \textcolor{comment}{// Friends}}
+\DoxyCodeLine{24     \textcolor{comment}{// Overload the exertion operator to print all vector content}}
+\DoxyCodeLine{25     \textcolor{keyword}{friend} ostream\& operator<< <T> (ostream\&, \mbox{\hyperlink{classMSVector}{MSVector<T>}});}
+\DoxyCodeLine{26 \textcolor{comment}{// Private data members}}
+\DoxyCodeLine{27 \textcolor{keyword}{private}:}
+\DoxyCodeLine{28     \textcolor{keywordtype}{int} size, capacity;}
+\DoxyCodeLine{29     T* data;}
+\DoxyCodeLine{30 \textcolor{comment}{// Public methods}}
+\DoxyCodeLine{31 \textcolor{keyword}{public}:}
+\DoxyCodeLine{32     }
+\DoxyCodeLine{33     \textcolor{keyword}{typedef} T* iterator;}
+\DoxyCodeLine{34     }
+\DoxyCodeLine{39     \mbox{\hyperlink{classMSVector_a947e69603a66657eaf2ec54cc1596c8d}{MSVector}}();}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{45     \mbox{\hyperlink{classMSVector_a947e69603a66657eaf2ec54cc1596c8d}{MSVector}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{51     \mbox{\hyperlink{classMSVector_a947e69603a66657eaf2ec54cc1596c8d}{MSVector}}(T*, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{57     \mbox{\hyperlink{classMSVector_a947e69603a66657eaf2ec54cc1596c8d}{MSVector}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMSVector}{MSVector<T>}}\&);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{64     \mbox{\hyperlink{classMSVector}{MSVector<T>}}\& \mbox{\hyperlink{classMSVector_a1e81f35908f8a3eb9ba984c38cf32b17}{operator=}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMSVector}{MSVector<T>}}\&);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{71     \mbox{\hyperlink{classMSVector}{MSVector<T>}}\& \mbox{\hyperlink{classMSVector_a1e81f35908f8a3eb9ba984c38cf32b17}{operator=}}(\mbox{\hyperlink{classMSVector}{MSVector<T>}}\&\&);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{77     \mbox{\hyperlink{classMSVector_a1c33368fa1be676ab7d7a72295978d43}{\string~MSVector}}();}
+\DoxyCodeLine{78 }
+\DoxyCodeLine{84     T\& \mbox{\hyperlink{classMSVector_a5a635fab299ccbb07d1c939173f18d03}{operator[]}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{91     iterator \mbox{\hyperlink{classMSVector_a0e266cfaa5551be6cbe757e8727e1a33}{begin}}();}
+\DoxyCodeLine{92 }
+\DoxyCodeLine{98     iterator \mbox{\hyperlink{classMSVector_a1c9d1d04961498ec023795fcc8945ed1}{end}}();}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{105     \textcolor{keywordtype}{int} \mbox{\hyperlink{classMSVector_a97009ed950bc708d36f1af5ab4219dbd}{push\_back}}(T);}
+\DoxyCodeLine{106 }
+\DoxyCodeLine{112     T \mbox{\hyperlink{classMSVector_a40c0f245496b44b1d13fc21410259e2f}{pop\_back}}();}
+\DoxyCodeLine{113 }
+\DoxyCodeLine{118     \textcolor{keywordtype}{void} \mbox{\hyperlink{classMSVector_a926c458ed05980502ed436a182a2160c}{insert}}(iterator, T);}
+\DoxyCodeLine{119     }
+\DoxyCodeLine{124     \textcolor{keywordtype}{void} \mbox{\hyperlink{classMSVector_af8be3ab175faa68ff15d677b57e51748}{erase}}(iterator);}
+\DoxyCodeLine{129     \textcolor{keywordtype}{void} \mbox{\hyperlink{classMSVector_af8be3ab175faa68ff15d677b57e51748}{erase}}(iterator,iterator);}
+\DoxyCodeLine{130     }
+\DoxyCodeLine{136     \textcolor{keywordtype}{int} \mbox{\hyperlink{classMSVector_a2c14fd28a517fa0488163e592562f485}{Size}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{142     \textcolor{keywordtype}{int} \mbox{\hyperlink{classMSVector_a1f91d959eb09d62d9337f3a6f2a482ab}{Capacity}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{143   }
+\DoxyCodeLine{149     \textcolor{keywordtype}{int} \mbox{\hyperlink{classMSVector_a9144c665df5be994ffdd059dfb9e6019}{Resize}}();}
+\DoxyCodeLine{150     }
+\DoxyCodeLine{157     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classMSVector_a4f4dbbc36b40425567a117b38c50cc8b}{Empty}}();}
+\DoxyCodeLine{158 }
+\DoxyCodeLine{163     \textcolor{keywordtype}{void} \mbox{\hyperlink{classMSVector_ae3390691c16e794646e169ac2c52547d}{Clear}}();}
+\DoxyCodeLine{164   }
+\DoxyCodeLine{171     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classMSVector_a1e804574ae558b710052b3bae69483cc}{operator==}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMSVector}{MSVector<T>}}\&);}
+\DoxyCodeLine{172   }
+\DoxyCodeLine{179     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classMSVector_a19ed043255b355665f21ccd8aaa23f2f}{operator<}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMSVector}{MSVector<T>}}\&);}
+\DoxyCodeLine{180 \};}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{188 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{189 \mbox{\hyperlink{classMSVector}{MSVector<T> :: MSVector}}() \{}
+\DoxyCodeLine{190     size = 0;}
+\DoxyCodeLine{191     capacity = 2;}
+\DoxyCodeLine{192     data = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{193 \}}
+\DoxyCodeLine{194 }
+\DoxyCodeLine{202 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{203 \mbox{\hyperlink{classMSVector}{MSVector<T> :: MSVector}}(\textcolor{keywordtype}{int} cap) \{}
+\DoxyCodeLine{204     size = 0;}
+\DoxyCodeLine{205     capacity = cap;}
+\DoxyCodeLine{206     data = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{207 \}}
+\DoxyCodeLine{208 }
+\DoxyCodeLine{217 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{218 \mbox{\hyperlink{classMSVector}{MSVector<T> :: MSVector}}(T* other, \textcolor{keywordtype}{int} n) \{}
+\DoxyCodeLine{219     size = n;}
+\DoxyCodeLine{220     capacity = n;}
+\DoxyCodeLine{221     data = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{222     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < size; i++)\{}
+\DoxyCodeLine{223         data[i] = other[i];}
+\DoxyCodeLine{224     \}}
+\DoxyCodeLine{225 \}}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{234 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{235 \mbox{\hyperlink{classMSVector}{MSVector<T> :: MSVector}}(\textcolor{keyword}{const} \mbox{\hyperlink{classMSVector}{MSVector<T>}}\& other) \{}
+\DoxyCodeLine{236     size = other.size;}
+\DoxyCodeLine{237     capacity = other.capacity;}
+\DoxyCodeLine{238     data = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{239     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < other.size; i++)\{}
+\DoxyCodeLine{240         data[i] = other.data[i];}
+\DoxyCodeLine{241     \}}
+\DoxyCodeLine{242 \}}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{251 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{252 \mbox{\hyperlink{classMSVector}{MSVector<T>}}\& \mbox{\hyperlink{classMSVector}{MSVector<T> :: operator= }}(\textcolor{keyword}{const} \mbox{\hyperlink{classMSVector}{MSVector<T>}}\& other) \{}
+\DoxyCodeLine{253     \textcolor{comment}{// Check if not self}}
+\DoxyCodeLine{254     \textcolor{keywordflow}{if}(\textcolor{keyword}{this} != \&other)\{}
+\DoxyCodeLine{255         \textcolor{keyword}{delete}[] data;}
+\DoxyCodeLine{256         size = other.size;}
+\DoxyCodeLine{257         capacity = other.capacity;}
+\DoxyCodeLine{258         data = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{259         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < size; i++)\{}
+\DoxyCodeLine{260             data[i] = other.data[i];}
+\DoxyCodeLine{261         \}}
+\DoxyCodeLine{262     \}}
+\DoxyCodeLine{263     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{264         cerr << \textcolor{stringliteral}{"{}Cannot copy self\(\backslash\)n"{}};}
+\DoxyCodeLine{265     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{266 \}}
+\DoxyCodeLine{267 }
+\DoxyCodeLine{275 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{276 \mbox{\hyperlink{classMSVector}{MSVector<T>}}\& \mbox{\hyperlink{classMSVector}{MSVector<T> :: operator= }}(\mbox{\hyperlink{classMSVector}{MSVector<T>}}\&\& other) \{}
+\DoxyCodeLine{277     \textcolor{keywordflow}{if}(\textcolor{keyword}{this} != \&other)\{}
+\DoxyCodeLine{278         size = other.size;}
+\DoxyCodeLine{279         capacity = other.capacity;}
+\DoxyCodeLine{280         data = other.data;}
+\DoxyCodeLine{281         other.data = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{282         other.size = 0;}
+\DoxyCodeLine{283         other.capacity = 0;}
+\DoxyCodeLine{284     \}}
+\DoxyCodeLine{285     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{286         cerr << \textcolor{stringliteral}{"{}Cannot move self\(\backslash\)n"{}};}
+\DoxyCodeLine{287     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};}
+\DoxyCodeLine{288 \}}
+\DoxyCodeLine{289 }
+\DoxyCodeLine{296 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{297 \mbox{\hyperlink{classMSVector}{MSVector<T> :: \string~MSVector}}() \{ \textcolor{keyword}{delete}[] data; \}}
+\DoxyCodeLine{298 }
+\DoxyCodeLine{305 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{306 \textcolor{keyword}{typename} \mbox{\hyperlink{classMSVector}{MSVector<T>}} :: iterator \mbox{\hyperlink{classMSVector}{MSVector<T> :: begin}}()\{ \textcolor{keywordflow}{return} data; \}}
+\DoxyCodeLine{307 }
+\DoxyCodeLine{314 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{315 \textcolor{keyword}{typename} \mbox{\hyperlink{classMSVector}{MSVector<T>}} :: iterator \mbox{\hyperlink{classMSVector}{MSVector<T> :: end}}() \{ \textcolor{keywordflow}{return} \&data[size]; \}}
+\DoxyCodeLine{316 }
+\DoxyCodeLine{324 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{325 T\& \mbox{\hyperlink{classMSVector}{MSVector<T> :: operator[] }}(\textcolor{keywordtype}{int} indx) \{}
+\DoxyCodeLine{326     \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{327         \textcolor{keywordflow}{if}(indx > size -\/ 1 or indx < 0)}
+\DoxyCodeLine{328             \textcolor{keywordflow}{throw} out\_of\_range(\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)tException Error: Index is OUT of range!\(\backslash\)n"{}});}
+\DoxyCodeLine{329     \} \textcolor{keywordflow}{catch}(out\_of\_range error)\{}
+\DoxyCodeLine{330         cerr << error.what(); exit(-\/1);}
+\DoxyCodeLine{331     \}}
+\DoxyCodeLine{332     \textcolor{keywordflow}{return} data[indx];}
+\DoxyCodeLine{333 \}}
+\DoxyCodeLine{334 }
+\DoxyCodeLine{342 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{343 \textcolor{keywordtype}{int} \mbox{\hyperlink{classMSVector}{MSVector<T> :: push\_back}}(T item) \{}
+\DoxyCodeLine{344     \textcolor{comment}{// Check if the vector is full and if so}}
+\DoxyCodeLine{345     \textcolor{comment}{// resize to double the capacity}}
+\DoxyCodeLine{346     \textcolor{keywordflow}{if}(size >= capacity)\{ this-\/>Resize(); \}}
+\DoxyCodeLine{347     data[size++] = item;}
+\DoxyCodeLine{348     \textcolor{keywordflow}{return} size;}
+\DoxyCodeLine{349 \}}
+\DoxyCodeLine{350 }
+\DoxyCodeLine{357 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{358 T \mbox{\hyperlink{classMSVector}{MSVector<T> :: pop\_back}}() \{}
+\DoxyCodeLine{359     \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{360         \textcolor{keywordflow}{if}(this-\/>Empty())\{}
+\DoxyCodeLine{361             \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)tException Error: Vector is already EMPTY!\(\backslash\)n"{}};}
+\DoxyCodeLine{362         \}}
+\DoxyCodeLine{363     \} \textcolor{keywordflow}{catch}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* error)\{ cerr << error; exit(-\/1); \}}
+\DoxyCodeLine{364     \textcolor{keywordflow}{return} data[-\/-\/size];}
+\DoxyCodeLine{365 \}}
+\DoxyCodeLine{366 }
+\DoxyCodeLine{374 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{375 \textcolor{keywordtype}{void} \mbox{\hyperlink{classMSVector}{MSVector<T> :: insert}}(iterator pos, T value) \{}
+\DoxyCodeLine{376     \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{377         \textcolor{keywordflow}{if}(pos > \mbox{\hyperlink{classMSVector}{MSVector<T>::end}}() || pos < \mbox{\hyperlink{classMSVector}{MSVector<T>::begin}}())}
+\DoxyCodeLine{378             \textcolor{keywordflow}{throw} out\_of\_range(\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)tException Error: Position is out of range!\(\backslash\)n"{}});}
+\DoxyCodeLine{379     \} \textcolor{keywordflow}{catch}(out\_of\_range error)\{}
+\DoxyCodeLine{380         cerr << error.what(); exit(-\/1);}
+\DoxyCodeLine{381     \}}
+\DoxyCodeLine{382     \textcolor{keywordflow}{if}(pos == \mbox{\hyperlink{classMSVector}{MSVector<T>::end}}())\{}
+\DoxyCodeLine{383         this-\/>push\_back(value);}
+\DoxyCodeLine{384     \}}
+\DoxyCodeLine{385     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{386         \textcolor{keywordflow}{if}(size + 1 > capacity)}
+\DoxyCodeLine{387             capacity *= 2;}
+\DoxyCodeLine{388         \textcolor{keywordtype}{int} idx = 0;}
+\DoxyCodeLine{389         T *newData = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{390         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = \mbox{\hyperlink{classMSVector}{MSVector<T>::begin}}(); it != \mbox{\hyperlink{classMSVector_a1c9d1d04961498ec023795fcc8945ed1}{MSVector<T>::end}}();) \{}
+\DoxyCodeLine{391             \textcolor{keywordflow}{if} (it != pos)}
+\DoxyCodeLine{392                 newData[idx++] = *(it++);}
+\DoxyCodeLine{393             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{394                 newData[idx++] = value;}
+\DoxyCodeLine{395                 newData[idx++] = *(it++);}
+\DoxyCodeLine{396             \}}
+\DoxyCodeLine{397         \}}
+\DoxyCodeLine{398         \textcolor{keyword}{delete}[] data;}
+\DoxyCodeLine{399         size++;}
+\DoxyCodeLine{400         data = newData;}
+\DoxyCodeLine{401         newData = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{402     \}}
+\DoxyCodeLine{403 \}}
+\DoxyCodeLine{404 }
+\DoxyCodeLine{405 }
+\DoxyCodeLine{412 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{413 \textcolor{keywordtype}{void} \mbox{\hyperlink{classMSVector}{MSVector<T> :: erase}}(iterator pos) \{}
+\DoxyCodeLine{414     \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{415         \textcolor{keywordflow}{if}(pos < \mbox{\hyperlink{classMSVector}{MSVector<T>::begin}}() || pos >= \mbox{\hyperlink{classMSVector}{MSVector<T>::end}}())}
+\DoxyCodeLine{416             \textcolor{keywordflow}{throw} out\_of\_range(\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)tException Error: Position is out of range!\(\backslash\)n"{}});}
+\DoxyCodeLine{417     \} \textcolor{keywordflow}{catch}(out\_of\_range error)\{}
+\DoxyCodeLine{418         cerr << error.what(); exit(-\/1);}
+\DoxyCodeLine{419     \}}
+\DoxyCodeLine{420     \textcolor{keywordtype}{int} idx = 0;}
+\DoxyCodeLine{421     T* newData = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{422     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = \mbox{\hyperlink{classMSVector}{MSVector<T>::begin}}(); it != \mbox{\hyperlink{classMSVector_a1c9d1d04961498ec023795fcc8945ed1}{MSVector<T>::end}}(); ++it) \{}
+\DoxyCodeLine{423         \textcolor{keywordflow}{if}(it != pos)}
+\DoxyCodeLine{424             newData[idx++] = *it;}
+\DoxyCodeLine{425     \}}
+\DoxyCodeLine{426     \textcolor{keyword}{delete} [] data;}
+\DoxyCodeLine{427     size-\/-\/;}
+\DoxyCodeLine{428     data = newData;}
+\DoxyCodeLine{429     newData = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{430 \}}
+\DoxyCodeLine{431 }
+\DoxyCodeLine{439 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{440 \textcolor{keywordtype}{void} \mbox{\hyperlink{classMSVector}{MSVector<T> :: erase}}(iterator start, iterator end) \{}
+\DoxyCodeLine{441     \textcolor{keywordflow}{try}\{}
+\DoxyCodeLine{442         \textcolor{keywordflow}{if}((start < \mbox{\hyperlink{classMSVector}{MSVector<T>::begin}}() || start > \mbox{\hyperlink{classMSVector}{MSVector<T>::end}}())}
+\DoxyCodeLine{443         \&\& (end < \mbox{\hyperlink{classMSVector}{MSVector<T>::begin}}() || end > \mbox{\hyperlink{classMSVector}{MSVector<T>::end}}()))\{}
+\DoxyCodeLine{444             \textcolor{keywordflow}{throw} out\_of\_range(\textcolor{stringliteral}{"{}\(\backslash\)n\(\backslash\)tException Error: Position is out of range!\(\backslash\)n"{}});}
+\DoxyCodeLine{445         \}}
+\DoxyCodeLine{446     \} \textcolor{keywordflow}{catch}(out\_of\_range error)\{}
+\DoxyCodeLine{447         cerr << error.what(); exit(-\/1);}
+\DoxyCodeLine{448     \}}
+\DoxyCodeLine{449     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{450         \textcolor{keywordflow}{if} (start > end)}
+\DoxyCodeLine{451             \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}Position of start is greater than Position of end"{}};}
+\DoxyCodeLine{452     \}}
+\DoxyCodeLine{453     \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} \textcolor{keywordtype}{char}* e)\{}
+\DoxyCodeLine{454         cerr << \textcolor{stringliteral}{"{}Program Terminated due to: "{}} << e;}
+\DoxyCodeLine{455         exit(-\/1);}
+\DoxyCodeLine{456     \}}
+\DoxyCodeLine{457     \textcolor{keywordtype}{int} idx = 0;}
+\DoxyCodeLine{458     \textcolor{keywordtype}{int} LB = start -\/ \mbox{\hyperlink{classMSVector_a0e266cfaa5551be6cbe757e8727e1a33}{MSVector<T>::begin}}();}
+\DoxyCodeLine{459     \textcolor{keywordtype}{int} UB = end -\/ \mbox{\hyperlink{classMSVector_a0e266cfaa5551be6cbe757e8727e1a33}{MSVector<T>::begin}}() -\/ 1;}
+\DoxyCodeLine{460     \textcolor{keywordtype}{int} newSize = size -\/ (UB -\/ LB + 1);}
+\DoxyCodeLine{461     \textcolor{keywordflow}{if}(newSize <= 0)\{}
+\DoxyCodeLine{462         \mbox{\hyperlink{classMSVector_ae3390691c16e794646e169ac2c52547d}{MSVector<T>::Clear}}();}
+\DoxyCodeLine{463         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{464     \}}
+\DoxyCodeLine{465     T* newData = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{466     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} it = \mbox{\hyperlink{classMSVector}{MSVector<T>::begin}}(); it != \mbox{\hyperlink{classMSVector_a1c9d1d04961498ec023795fcc8945ed1}{MSVector<T>::end}}(); ++it) \{}
+\DoxyCodeLine{467         \textcolor{keywordflow}{if}(it < start || it > end -\/ 1)}
+\DoxyCodeLine{468             newData[idx++] = *it;}
+\DoxyCodeLine{469     \}}
+\DoxyCodeLine{470     \textcolor{keyword}{delete} [] data;}
+\DoxyCodeLine{471     size = newSize;}
+\DoxyCodeLine{472     data = newData;}
+\DoxyCodeLine{473     newData = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{474 \}}
+\DoxyCodeLine{475 }
+\DoxyCodeLine{482 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{483 \textcolor{keywordtype}{int} \mbox{\hyperlink{classMSVector}{MSVector<T> :: Size}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} size; \}}
+\DoxyCodeLine{484 }
+\DoxyCodeLine{491 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{492 \textcolor{keywordtype}{int} \mbox{\hyperlink{classMSVector}{MSVector<T> :: Capacity}}()\textcolor{keyword}{ const }\{ \textcolor{keywordflow}{return} capacity; \}}
+\DoxyCodeLine{493 }
+\DoxyCodeLine{500 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{501 \textcolor{keywordtype}{int} \mbox{\hyperlink{classMSVector}{MSVector<T> :: Resize}}() \{}
+\DoxyCodeLine{502     \textcolor{comment}{// If the vector is not full return 0}}
+\DoxyCodeLine{503     \textcolor{keywordflow}{if}(size < capacity)\{ \textcolor{keywordflow}{return} capacity; \}}
+\DoxyCodeLine{504     \textcolor{comment}{// Otherwise double the capacity}}
+\DoxyCodeLine{505     capacity *= 2;}
+\DoxyCodeLine{506     T* newData = \textcolor{keyword}{new} T[capacity];}
+\DoxyCodeLine{507     \textcolor{comment}{// Copy the old vector in a new one}}
+\DoxyCodeLine{508     \textcolor{comment}{// with double the capacity}}
+\DoxyCodeLine{509     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < size; ++i)\{}
+\DoxyCodeLine{510         newData[i] = data[i];}
+\DoxyCodeLine{511     \}}
+\DoxyCodeLine{512     \textcolor{keyword}{delete} [] data; \textcolor{comment}{// Delete the old vector}}
+\DoxyCodeLine{513     data = newData; \textcolor{comment}{// Copy the new to the old}}
+\DoxyCodeLine{514     \textcolor{keywordflow}{return} capacity;}
+\DoxyCodeLine{515 \}}
+\DoxyCodeLine{516 }
+\DoxyCodeLine{524 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{525 \textcolor{keywordtype}{bool} \mbox{\hyperlink{classMSVector}{MSVector<T> :: Empty}}() \{}
+\DoxyCodeLine{526     \textcolor{keywordflow}{if}(size == 0) \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{527     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{528 \}}
+\DoxyCodeLine{529 }
+\DoxyCodeLine{535 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{536 \textcolor{keywordtype}{void} \mbox{\hyperlink{classMSVector}{MSVector<T> :: Clear}}() \{}
+\DoxyCodeLine{537     size = 0;}
+\DoxyCodeLine{538     \textcolor{keyword}{delete} [] data;}
+\DoxyCodeLine{539     data = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{540 \}}
+\DoxyCodeLine{541 }
+\DoxyCodeLine{550 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{551 \textcolor{keywordtype}{bool} \mbox{\hyperlink{classMSVector}{MSVector<T> :: operator== }}(\textcolor{keyword}{const} \mbox{\hyperlink{classMSVector}{MSVector<T>}} \&other) \{}
+\DoxyCodeLine{552     \textcolor{keywordflow}{if}(this-\/>Size() != other.\mbox{\hyperlink{classMSVector_a2c14fd28a517fa0488163e592562f485}{Size}}())}
+\DoxyCodeLine{553         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{554     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{555         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{556             \textcolor{keywordflow}{if}(this-\/>data[i] != other.data[i])}
+\DoxyCodeLine{557                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{558         \}}
+\DoxyCodeLine{559     \}}
+\DoxyCodeLine{560     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{561 \}}
+\DoxyCodeLine{562 }
+\DoxyCodeLine{571 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{572 \textcolor{keywordtype}{bool} \mbox{\hyperlink{classMSVector}{MSVector<T> :: operator< }}(\textcolor{keyword}{const} \mbox{\hyperlink{classMSVector}{MSVector<T>}} \&other) \{}
+\DoxyCodeLine{573     \textcolor{keywordflow}{if}(this-\/>Size() != other.\mbox{\hyperlink{classMSVector_a2c14fd28a517fa0488163e592562f485}{Size}}())}
+\DoxyCodeLine{574         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{575     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{576         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < size; ++i) \{}
+\DoxyCodeLine{577             \textcolor{keywordflow}{if}(this-\/>data[i] >= other.data[i])}
+\DoxyCodeLine{578                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{579         \}}
+\DoxyCodeLine{580     \}}
+\DoxyCodeLine{581     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{582 \}}
+\DoxyCodeLine{583 }
+\DoxyCodeLine{592 \textcolor{keyword}{template} <\textcolor{keyword}{class} T>}
+\DoxyCodeLine{593 ostream\& \mbox{\hyperlink{msVector_8hpp_a9c642eec61ddb2c7940180820fcfc1ff}{operator<< }}(ostream\& out, \mbox{\hyperlink{classMSVector}{MSVector<T>}} vec) \{}
+\DoxyCodeLine{594     \textcolor{keywordflow}{if} (!vec.\mbox{\hyperlink{classMSVector_a4f4dbbc36b40425567a117b38c50cc8b}{Empty}}())\{}
+\DoxyCodeLine{595         out << \textcolor{stringliteral}{"{}\(\backslash\)t==> "{}};}
+\DoxyCodeLine{596         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < vec.\mbox{\hyperlink{classMSVector_a2c14fd28a517fa0488163e592562f485}{Size}}(); ++i)}
+\DoxyCodeLine{597             out << vec[i] << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{598         out << \textcolor{stringliteral}{"{}<=="{}};}
+\DoxyCodeLine{599     \}}
+\DoxyCodeLine{600     out << \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{601     \textcolor{keywordflow}{return} out;}
+\DoxyCodeLine{602 \}}
+\DoxyCodeLine{603 }
+\DoxyCodeLine{604 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
